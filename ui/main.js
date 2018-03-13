@@ -12,6 +12,89 @@ let person = {};
 let vars = {};
 
 class Form extends React.Component {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			curInterestRate: 0.04,
+			curTotalTaxBurden: getTaxBurden(),
+			person: {
+				debt: {
+					loans: getLoans(),
+					get total () {
+						let amount = 0;
+						const loans = this.loans;
+
+						for (var i = 0; i < loans.length; i++) {
+							amount += loans[i].amount;
+						}
+
+						return amount;
+					}
+				},
+				income: 50000,
+				initialIncome: 50000,
+				get netIncome () {
+					return applyTax(this.income);
+				},
+				nestEgg: 0,
+				savings: 0,
+				yrsRetired: 0,
+			},
+			raisePercent: 5,
+			retirementIncome: 200000,
+			savingPercent: 0.15,
+			workingYears: 42,
+		};
+	}
+
+	handleBlur_1() {
+		let stateObj = this.state;
+		form = this.form;
+
+		this.setState(
+			{
+				curTotalTaxBurden: getTaxBurden(),
+				raisePercent: form.elements['raisePercent'].value ? parseFloat(form.elements['raisePercent'].value) : 5,
+				retirementIncome: form.elements['retIncome'].value ? parseInt(form.elements['retIncome'].value) : 200000,
+				savingPercent: form.elements['savePercent'].value ? parseFloat(form.elements['savePercent'].value / 100) : 0.15,
+				person: {
+					debt: {
+						loans: getLoans(),
+						get total () {
+							let amount = 0;
+							const loans = this.loans;
+
+							for (var i = 0; i < loans.length; i++) {
+								amount += loans[i].amount;
+							}
+
+							return amount;
+						}
+					},
+					income: parseInt(form.elements['income'].value || 50000),
+					initialIncome: parseInt(form.elements['income'].value || 50000),
+					get netIncome () {
+						return applyTax(this.income);
+					},
+					nestEgg: 0,
+					savings: parseInt(form.elements['savings'].value || 0),
+					yrsRetired: 0,
+				},
+				get workingYears () {
+					let value = stateObj.workingYears;
+
+
+					if (form.elements['retAge'].value && form.elements['curAge'].value) {
+						value = parseInt(form.elements['retAge'].value) - parseInt(form.elements['curAge'].value);
+					}
+
+					return value;
+				},
+			}
+		);
+	}
+
 	calculate() {
 		form = this.form;
 		setVars();
@@ -26,7 +109,7 @@ class Form extends React.Component {
 			<form action="javascript:;" method="POST" name="retirement" ref={fm => this.form = fm}>
 				<legend>Info</legend>
 
-				<FormField handleBlur={() => this.calculate()} label="Annual Income (Gross)" name="income" placeholder="$50000" />
+				<FormField handleBlur={() => this.handleBlur_1()} label="Annual Income (Gross)" name="income" placeholder="$50000" />
 				<FormField handleBlur={() => this.calculate()} label="Current Age" name="curAge" placeholder="25" />
 				<FormField handleBlur={() => this.calculate()} label="Target Retirement Age" name="retAge" placeholder="67" />
 				<FormField handleBlur={() => this.calculate()} label="Current Savings" name="savings" placeholder="$0" />
@@ -49,7 +132,7 @@ ReactDOM.render(
 );
 
 function applyTax(amount, rate) {
-	rate = rate || vars.curTotalTaxBurden;
+	rate = rate || getTaxBurden();
 
 	if (rate > 1) {
 		rate = rate / 100;
@@ -62,18 +145,21 @@ function applyTax(amount, rate) {
 
 function getLoans() {
 	let loans = [];
-	let loanNodes = form.querySelectorAll('.debt-group');
 
-	loanNodes.forEach(
-		item => {
-			var loan = {
-				amount: parseInt(item.querySelector('.debt').value),
-				interestRate: parseInt(item.querySelector('.interest').value)
-			};
+	if (form) {
+		let loanNodes = form.querySelectorAll('.debt-group');
 
-			loans.push(loan);
-		}
-	)
+		loanNodes.forEach(
+			item => {
+				var loan = {
+					amount: parseInt(item.querySelector('.debt').value),
+					interestRate: parseInt(item.querySelector('.interest').value)
+				};
+
+				loans.push(loan);
+			}
+		);
+	}
 
 	return loans;
 }
