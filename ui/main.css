@@ -1,0 +1,11 @@
+.wrapper {
+	display: flex;
+	justify-content: space-between;
+
+}
+
+.wrapper > div {
+	padding: 2em;
+	width: 33%;
+	box-sizing: border-box;
+}
