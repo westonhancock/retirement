@@ -4,7 +4,7 @@
 
 }
 
-.wrapper > div {
+.wrapper > p, .wrapper > form, .wrapper > table {
 	padding: 2em;
 	width: 33%;
 	box-sizing: border-box;
