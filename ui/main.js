@@ -18,45 +18,41 @@ class App extends React.Component {
 		super(props);
 
 		this.state = {
+			age: 25,
 			curInterestRate: 0.04,
 			curTotalTaxBurden: getTaxBurden(this.income, this.filingType, this.residence),
 			debt: {
-				loans: getLoans(),
+				loans: [],
 				get total () {
-					let amount = 0;
-					const loans = this.loans;
-
-					for (let i = 0; i < loans.length; i++) {
-						amount += loans[i].amount;
-					}
-
-					return amount;
+					return 0;
 				}
 			},
 			filingType: 'single',
+			graphData: [],
 			income: 50000,
 			initialIncome: 50000,
 			get netIncome () {
 				return applyTax(this.income, this.filingType, this.residence);
 			},
 			nestEgg: 0,
-			raisePercent: 5,
+			raisePercent: 3,
 			residence: 'california',
 			resultData: [],
 			retirementIncome: 200000,
-			savingPercent: 0.15,
+			savingPercent: 0.10,
 			savings: 10,
 			workingYears: 42,
 			yrsRetired: 0,
 		};
 	}
 
-	handleReset() {
+	calculate() {
 		let stateObj = this.state;
 		form = this.form;
 
 		this.setState(
 			{
+				age: parseInt(form.elements['curAge'].value || stateObj.age),
 				curTotalTaxBurden: getTaxBurden(stateObj.income, stateObj.filingType, stateObj.residence),
 				debt: {
 					loans: getLoans(),
@@ -72,18 +68,19 @@ class App extends React.Component {
 					}
 				},
 				filingType: form.elements['filingType'].value || 'single',
-				income: parseInt(form.elements['income'].value || 50000),
-				initialIncome: parseInt(form.elements['income'].value || 50000),
+				graphData: [],
+				income: parseInt(form.elements['income'].value || stateObj.income),
+				initialIncome: parseInt(form.elements['income'].value || stateObj.initialIncome),
 				get netIncome () {
 					return applyTax(this.income, this.filingType, this.residence);
 				},
 				nestEgg: 0,
-				raisePercent: form.elements['raisePercent'].value ? parseFloat(form.elements['raisePercent'].value) : 5,
+				raisePercent: parseFloat(form.elements['raisePercent'].value || stateObj.raisePercent),
 				residence: form.elements['residence'].value || 'california',
 				resultData: [],
-				retirementIncome: form.elements['retIncome'].value ? parseInt(form.elements['retIncome'].value) : 200000,
-				savingPercent: form.elements['savePercent'].value ? parseFloat(form.elements['savePercent'].value / 100) : 0.15,
-				savings: parseInt(form.elements['savings'].value || 0),
+				retirementIncome: parseInt(form.elements['retIncome'].value || stateObj.retirementIncome),
+				savingPercent: parseFloat(form.elements['savePercent'].value / 100 ||  stateObj.savingPercent),
+				savings: parseInt(form.elements['savings'].value || stateObj.savings),
 				get workingYears () {
 					let value = stateObj.workingYears;
 
@@ -100,23 +97,30 @@ class App extends React.Component {
 	}
 
 	work() {
-		let rows = [];
+		let age = this.state.age;
 		let income = this.state.income;
 		let savings = this.state.savings;
+		let netIncome = this.state.netIncome;
+
 		let graphData = [];
+		let rows = [];
 
 		for (let year = 1; year <= this.state.workingYears; year++) {
-			let disposibleIncome = this.state.netIncome * this.state.savingPercent;
+			let disposibleIncome = netIncome * this.state.savingPercent;
 
 			if (this.state.debt.total) {
 				disposibleIncome = payOffDebt(disposibleIncome);
 			}
 
-			savings = interest(savings + disposibleIncome);
+			age++;
+
+			savings = interest(savings + disposibleIncome, this.state.curInterestRate);
 
 			income = giveRaise(income, this.state.raisePercent);
+			netIncome = applyTax(income, this.state.filingType, this.state.residence).toFixed(2)
 
-			graphData.push({Age: year, 'Net Income': applyTax(income.toFixed(2), this.state.filingType, this.state.residence), savings: savings.toFixed(2)});
+
+			graphData.push({Age: age, 'Net Income': netIncome, Savings: savings.toFixed(2)});
 
 			rows.push(
 				<ResultsData
@@ -130,6 +134,7 @@ class App extends React.Component {
 
 		this.setState(
 			{
+				age: age,
 				income: income,
 				nestEgg: savings,
 				resultData: rows,
@@ -157,21 +162,23 @@ class App extends React.Component {
 	retire() {
 		let savings = this.state.savings;
 		let yrsRetired = this.state.yrsRetired;
+		let age = this.state.age;
+		let graphData = this.state.graphData;
 
 		do {
 			savings = interest(savings, this.state.curInterestRate) - this.state.retirementIncome
 			yrsRetired++
+			age++
+
+			graphData.push({Age: age, 'Net Income': 0, Savings: savings.toFixed(2)});
 		} while (savings > this.state.retirementIncome)
 
 		this.setState({
+			age: age,
+			graphData: graphData,
 			savings: savings,
 			yrsRetired: yrsRetired,
 		});
-	}
-
-	calculate() {
-		this.work();
-		// this.retire();
 	}
 
 	static defaultProps = {
@@ -197,35 +204,33 @@ class App extends React.Component {
 				<form action="javascript:;" method="POST" name="retirement" ref={fm => this.form = fm}>
 					<legend>Info</legend>
 
-					<FormField handleBlur={() => this.handleReset()} label="Annual Income (Gross)" name="income" placeholder="$50000" inputType="number" />
-					<FormField handleBlur={() => this.handleReset()} label="Current Age" name="curAge" placeholder="25" inputType="number" />
-					<FormField handleBlur={() => this.handleReset()} label="Target Retirement Age" name="retAge" placeholder="67" inputType="number" />
-					<FormField handleBlur={() => this.handleReset()} label="Current Savings" name="savings" placeholder="$0" inputType="number" />
-					<FormField handleBlur={() => this.handleReset()} label="Percent of Net income saved" name="savePercent" placeholder="15%" inputType="number" />
-					<FormField handleBlur={() => this.handleReset()} label="Expected average raise" name="raisePercent" placeholder="5%" inputType="number" />
-					<FormField handleBlur={() => this.handleReset()} label="Target Retirement Income" name="retIncome" placeholder="$200000" inputType="number" />
-					<FormField handleBlur={() => this.handleReset()} label="Current State of Residence" name="residence" placeholder="california" inputType="select" selectOptions={residenceOptions} />
-					<FormField handleBlur={() => this.handleReset()} label="Tax Filing Type" name="filingType" placeholder="single" inputType="select" selectOptions={filingTypeOptions} />
+					<FormField handleBlur={() => this.calculate()} label="Annual Income (Gross)" name="income" placeholder="$50000" inputType="number" />
+					<FormField handleBlur={() => this.calculate()} label="Current Age" name="curAge" placeholder="25" inputType="number" />
+					<FormField handleBlur={() => this.calculate()} label="Target Retirement Age" name="retAge" placeholder="67" inputType="number" />
+					<FormField handleBlur={() => this.calculate()} label="Current Savings" name="savings" placeholder="$0" inputType="number" />
+					<FormField handleBlur={() => this.calculate()} label="Percent of Net income saved" name="savePercent" placeholder="10%" inputType="number" />
+					<FormField handleBlur={() => this.calculate()} label="Expected average raise" name="raisePercent" placeholder="3%" inputType="number" />
+					<FormField handleBlur={() => this.calculate()} label="Target Retirement Income" name="retIncome" placeholder="$200000" inputType="number" />
+					<FormField handleBlur={() => this.calculate()} label="Current State of Residence" name="residence" placeholder="california" inputType="select" selectOptions={residenceOptions} />
+					<FormField handleBlur={() => this.calculate()} label="Tax Filing Type" name="filingType" placeholder="single" inputType="select" selectOptions={filingTypeOptions} />
 
 					<label>Debt</label>
 					<Debt />
 
-					<button type="submit" className="btn btn-primary" onClick={() => this.handleReset()}>Calculate</button>
+					<button type="submit" className="btn btn-primary" onClick={() => this.calculate()}>Calculate</button>
 				</form>
 
 				<Results resultData={this.state.resultData} />
 
 				<Message
-					nestEgg={this.state.nestEgg}
-					yrsRetired={this.state.yrsRetired}
-					retirementIncome={this.state.retirementIncome}
-					workingYears={this.state.workingYears}
-					initialIncome={this.state.initialIncome}
-					raisePercent={this.state.raisePercent}
-					savingPercent={this.state.savingPercent}
 					curInterestRate={this.state.curInterestRate}
-					yrsRetired={this.state.yrsRetired}
+					initialIncome={this.state.initialIncome}
+					nestEgg={this.state.nestEgg}
+					raisePercent={this.state.raisePercent}
+					retirementIncome={this.state.retirementIncome}
+					savingPercent={this.state.savingPercent}
 					workingYears={this.state.workingYears}
+					yrsRetired={this.state.yrsRetired}
 				/>
 			</div>
 		);
@@ -291,7 +296,7 @@ function getTaxBurden(income, filingType, residence) {
 		stateTaxBrackets = stateTaxes[filingType].income_tax_brackets;
 	}
 
-    for (let i = 0; i < stateTaxBrackets.length; i++) {
+	for (let i = 0; i < stateTaxBrackets.length; i++) {
 		let curBracket = stateTaxBrackets[i];
 		let nextBracket = stateTaxBrackets[i + 1];
 
@@ -359,6 +364,5 @@ function interest(amount, rate) {
 	if (rate < 1) {
 		rate += 1;
 	}
-
 	return amount * rate;
 }
