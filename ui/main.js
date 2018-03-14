@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import Debt from '../components/Debt';
 import FormField from '../components/FormField';
 import Message from '../components/Message';
+import ReactChart from '../components/ReactChart';
 import Results from '../components/Results';
 import ResultsData from '../components/ResultsData';
 
@@ -16,6 +17,7 @@ class App extends React.Component {
 		this.state = {
 			curInterestRate: 0.04,
 			curTotalTaxBurden: getTaxBurden(),
+			graphData: [],
 			debt: {
 				loans: getLoans(),
 				get total () {
@@ -40,6 +42,7 @@ class App extends React.Component {
 			retirementIncome: 200000,
 			savingPercent: 0.15,
 			savings: 10,
+			startAge: 25,
 			workingYears: 42,
 			yrsRetired: 0,
 		};
@@ -52,6 +55,7 @@ class App extends React.Component {
 		this.setState(
 			{
 				curTotalTaxBurden: getTaxBurden(),
+				graphData: [],
 				debt: {
 					loans: getLoans(),
 					get total () {
@@ -76,6 +80,7 @@ class App extends React.Component {
 				retirementIncome: form.elements['retIncome'].value ? parseInt(form.elements['retIncome'].value) : 200000,
 				savingPercent: form.elements['savePercent'].value ? parseFloat(form.elements['savePercent'].value / 100) : 0.15,
 				savings: parseInt(form.elements['savings'].value || 0),
+				startAge: parseInt(form.elements['curAge'].value || 25),
 				get workingYears () {
 					let value = stateObj.workingYears;
 
@@ -104,11 +109,11 @@ class App extends React.Component {
 				disposibleIncome = payOffDebt(disposibleIncome);
 			}
 
-			savings = interest(savings + disposibleIncome);
+			savings = interest(savings + disposibleIncome, this.state.curInterestRate);
 
 			income = giveRaise(income, this.state.raisePercent);
 
-			graphData.push({Age: year, 'Net Income': applyTax(income.toFixed(2)), savings: savings.toFixed(2)});
+			graphData.push({Age: year + this.state.startAge, 'Net Income': applyTax(income.toFixed(2)), Savings: savings.toFixed(2)});
 
 			rows.push(
 				<ResultsData
@@ -149,13 +154,16 @@ class App extends React.Component {
 	retire() {
 		let savings = this.state.savings;
 		let yrsRetired = this.state.yrsRetired;
-
+		let ageRetired = this.state.yrsRetired + this.state.startAge;
+		let graphData = this.state.graphData;
 		do {
 			savings = interest(savings, this.state.curInterestRate) - this.state.retirementIncome
 			yrsRetired++
+			graphData.push({Age: yrsRetired + ageRetired, 'Net Income': 0, Savings: savings.toFixed(2)})
 		} while (savings > this.state.retirementIncome)
 
 		this.setState({
+			graphData: graphData,
 			savings: savings,
 			yrsRetired: yrsRetired,
 		});
@@ -163,7 +171,6 @@ class App extends React.Component {
 
 	calculate() {
 		this.work();
-		// this.retire();
 	}
 
 	render () {
@@ -185,21 +192,27 @@ class App extends React.Component {
 
 					<button type="submit" className="btn btn-primary" onClick={() => this.handleReset()}>Calculate</button>
 				</form>
+				{ (this.state.graphData.length > 0) &&
+					<div>
+						<ReactChart 
+							data={this.state.graphData} 
+							retirementAge={this.state.workingYears + this.state.startAge}
+							retirementIncome={this.state.retirementIncome} 
+						/>
 
-				<Results resultData={this.state.resultData} />
-
-				<Message
-					nestEgg={this.state.nestEgg}
-					yrsRetired={this.state.yrsRetired}
-					retirementIncome={this.state.retirementIncome}
-					workingYears={this.state.workingYears}
-					initialIncome={this.state.initialIncome}
-					raisePercent={this.state.raisePercent}
-					savingPercent={this.state.savingPercent}
-					curInterestRate={this.state.curInterestRate}
-					yrsRetired={this.state.yrsRetired}
-					workingYears={this.state.workingYears}
-				/>
+						<Message
+							nestEgg={this.state.nestEgg}
+							retirementIncome={this.state.retirementIncome}
+							workingYears={this.state.workingYears}
+							initialIncome={this.state.initialIncome}
+							raisePercent={this.state.raisePercent}
+							savingPercent={this.state.savingPercent}
+							curInterestRate={this.state.curInterestRate}
+							yrsRetired={this.state.yrsRetired}
+							workingYears={this.state.workingYears}
+						/>
+					</div>
+				}
 			</div>
 		);
 	}

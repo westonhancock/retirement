@@ -4,7 +4,8 @@
   "description": "Calculator to compute retirement savings",
   "main": "index.js",
   "scripts": {
-    "test": "runTest"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "./node_modules/.bin/webpack-dev-server --config ./webpack/webpack.dev.config.js"
   },
   "repository": {
     "type": "git",
@@ -15,6 +16,7 @@
   "dependencies": {
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "recharts": "^1.0.0-beta.10",
     "webpack": "^3.11.0",
     "webpack-dev-server": "^2.11.1"
   },
@@ -41,9 +43,5 @@
     "plugins": [
       "transform-object-rest-spread"
     ]
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "./node_modules/.bin/webpack-dev-server --config ./webpack/webpack.dev.config.js"
   }
 }
