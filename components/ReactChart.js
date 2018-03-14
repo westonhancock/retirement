@@ -32,7 +32,7 @@ export default class ReactChart extends React.Component {
 						<Line type="monotone" dataKey="Savings" stroke="#82ca9d"  />
 						<Tooltip />
 						<XAxis dataKey="Age" />
-						<YAxis domain={[0, 'dataMax + 1000000']} />
+						<YAxis domain={[0, 'dataMax + 4000000']} />
 				</LineChart>
 			</ResponsiveContainer>
 		);

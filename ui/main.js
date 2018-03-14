@@ -14,7 +14,7 @@ let defaults = {
 	curInterestRate: 0.05,
 	income: 50000,
 	raisePercent: 3,
-	retirementIncome: 200000,
+	retirementIncome: 110000,
 	savingPercent: 0.10
 }
 
@@ -29,8 +29,8 @@ class App extends React.Component {
 
 		this.state = {
 			age: defaults.age,
+			curExpenses: defaults.income * 0.5,
 			curInterestRate: defaults.curInterestRate,
-			curTotalTaxBurden: getTaxBurden(this.income, this.filingType, this.residence),
 			debt: {
 				loans: [],
 				get total () {
@@ -63,7 +63,7 @@ class App extends React.Component {
 		this.setState(
 			{
 				age: parseInt(form.elements['curAge'].value || defaults.age),
-				curTotalTaxBurden: getTaxBurden(stateObj.income, stateObj.filingType, stateObj.residence),
+				curExpenses: parseInt(form.elements['curExpenses'].value) || defaults.income * 0.5,
 				debt: {
 					loans: getLoans(),
 					get total () {
@@ -88,15 +88,19 @@ class App extends React.Component {
 				raisePercent: parseFloat(form.elements['raisePercent'].value || defaults.raisePercent),
 				residence: form.elements['residence'].value || 'california',
 				resultData: [],
-				retirementIncome: parseInt(form.elements['retIncome'].value || defaults.retirementIncome),
+				get retirementIncome () {
+					return applyInflation(this.curExpenses, this.workingYears).toFixed(2);
+				},
 				savingPercent: parseFloat(form.elements['savePercent'].value / 100 ||  defaults.savingPercent),
 				savings: parseInt(form.elements['savings'].value || 0),
 				startAge: parseInt(form.elements['curAge'].value || defaults.age),
 				get workingYears () {
 					let value = stateObj.workingYears;
+					let curAge = this.startAge;
+					let retAge = form.elements['retAge'].value || 67;
 
-					if (form.elements['retAge'].value && form.elements['curAge'].value) {
-						value = parseInt(form.elements['retAge'].value) - parseInt(form.elements['curAge'].value);
+					if (curAge && retAge) {
+						value = parseInt(retAge) - parseInt(curAge);
 					}
 
 					return value;
@@ -169,6 +173,7 @@ class App extends React.Component {
 		do {
 			savings = interest(savings, this.state.curInterestRate) - this.state.retirementIncome;
 			graphData.push({Age: age, Savings: savings.toFixed(2), 'Net Income': 0});
+
 			age++;
 			yrsRetired++;
 		} while (savings > this.state.retirementIncome)
@@ -204,13 +209,13 @@ class App extends React.Component {
 				<form action="javascript:;" method="POST" name="retirement" ref={fm => this.form = fm}>
 					<legend>Info</legend>
 
-					<FormField handleBlur={() => this.calculate()} label="Annual Income (Gross)" name="income" placeholder="$50000" inputType="number" />
+					<FormField handleBlur={() => this.calculate()} label="Annual Income (Gross)" name="income" placeholder="$50,000" inputType="number" />
 					<FormField handleBlur={() => this.calculate()} label="Current Age" name="curAge" placeholder="25" inputType="number" />
 					<FormField handleBlur={() => this.calculate()} label="Target Retirement Age" name="retAge" placeholder="67" inputType="number" />
 					<FormField handleBlur={() => this.calculate()} label="Current Savings" name="savings" placeholder="$0" inputType="number" />
 					<FormField handleBlur={() => this.calculate()} label="Percent of Net income saved" name="savePercent" placeholder="10%" inputType="number" />
 					<FormField handleBlur={() => this.calculate()} label="Expected average raise" name="raisePercent" placeholder="3%" inputType="number" />
-					<FormField handleBlur={() => this.calculate()} label="Target Retirement Income" name="retIncome" placeholder="$200000" inputType="number" />
+					<FormField handleBlur={() => this.calculate()} label="Current Expenses" name="curExpenses" placeholder="$25,000" inputType="number" />
 					<FormField handleBlur={() => this.calculate()} label="Current State of Residence" name="residence" placeholder="california" inputType="select" selectOptions={residenceOptions} />
 					<FormField handleBlur={() => this.calculate()} label="Tax Filing Type" name="filingType" placeholder="single" inputType="select" selectOptions={filingTypeOptions} />
 
@@ -249,6 +254,14 @@ ReactDOM.render(
 	<App />,
 	document.querySelector('.app')
 );
+
+function applyInflation(amount, years) {
+	for (let year = 1; year <= years; year++) {
+		amount = amount * 1.035;
+	}
+
+	return amount;
+}
 
 function applyTax(amount, filingType, residence, rate) {
 	rate = rate || getTaxBurden(amount, filingType, residence);
