@@ -61,7 +61,9 @@ class App extends React.Component {
 		this.setState(
 			{
 				age: parseInt(form.elements['curAge'].value || defaults.age),
-				curExpenses: parseInt(form.elements['curExpenses'].value) || defaults.income * 0.5,
+				get curExpenses () {
+					return parseInt(form.elements['curExpenses'].value) || this.income * 0.5;
+				},
 				debt: {
 					loans: getLoans(),
 					get total () {
