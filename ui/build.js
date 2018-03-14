@@ -1,66 +1,66 @@
 /******/ (function(modules) { // webpackBootstrap
-/******/ 	// The module cache
-/******/ 	var installedModules = {};
+/******/  // The module cache
+/******/  var installedModules = {};
 /******/
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
+/******/  // The require function
+/******/  function __webpack_require__(moduleId) {
 /******/
-/******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId]) {
-/******/ 			return installedModules[moduleId].exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = installedModules[moduleId] = {
-/******/ 			i: moduleId,
-/******/ 			l: false,
-/******/ 			exports: {}
-/******/ 		};
+/******/    // Check if module is in cache
+/******/    if(installedModules[moduleId]) {
+/******/      return installedModules[moduleId].exports;
+/******/    }
+/******/    // Create a new module (and put it into the cache)
+/******/    var module = installedModules[moduleId] = {
+/******/      i: moduleId,
+/******/      l: false,
+/******/      exports: {}
+/******/    };
 /******/
-/******/ 		// Execute the module function
-/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/    // Execute the module function
+/******/    modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
 /******/
-/******/ 		// Flag the module as loaded
-/******/ 		module.l = true;
+/******/    // Flag the module as loaded
+/******/    module.l = true;
 /******/
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
+/******/    // Return the exports of the module
+/******/    return module.exports;
+/******/  }
 /******/
 /******/
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = modules;
+/******/  // expose the modules object (__webpack_modules__)
+/******/  __webpack_require__.m = modules;
 /******/
-/******/ 	// expose the module cache
-/******/ 	__webpack_require__.c = installedModules;
+/******/  // expose the module cache
+/******/  __webpack_require__.c = installedModules;
 /******/
-/******/ 	// define getter function for harmony exports
-/******/ 	__webpack_require__.d = function(exports, name, getter) {
-/******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, {
-/******/ 				configurable: false,
-/******/ 				enumerable: true,
-/******/ 				get: getter
-/******/ 			});
-/******/ 		}
-/******/ 	};
+/******/  // define getter function for harmony exports
+/******/  __webpack_require__.d = function(exports, name, getter) {
+/******/    if(!__webpack_require__.o(exports, name)) {
+/******/      Object.defineProperty(exports, name, {
+/******/        configurable: false,
+/******/        enumerable: true,
+/******/        get: getter
+/******/      });
+/******/    }
+/******/  };
 /******/
-/******/ 	// getDefaultExport function for compatibility with non-harmony modules
-/******/ 	__webpack_require__.n = function(module) {
-/******/ 		var getter = module && module.__esModule ?
-/******/ 			function getDefault() { return module['default']; } :
-/******/ 			function getModuleExports() { return module; };
-/******/ 		__webpack_require__.d(getter, 'a', getter);
-/******/ 		return getter;
-/******/ 	};
+/******/  // getDefaultExport function for compatibility with non-harmony modules
+/******/  __webpack_require__.n = function(module) {
+/******/    var getter = module && module.__esModule ?
+/******/      function getDefault() { return module['default']; } :
+/******/      function getModuleExports() { return module; };
+/******/    __webpack_require__.d(getter, 'a', getter);
+/******/    return getter;
+/******/  };
 /******/
-/******/ 	// Object.prototype.hasOwnProperty.call
-/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/  // Object.prototype.hasOwnProperty.call
+/******/  __webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
-/******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/  // __webpack_public_path__
+/******/  __webpack_require__.p = "";
 /******/
-/******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 228);
+/******/  // Load entry module and return exports
+/******/  return __webpack_require__(__webpack_require__.s = 228);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -649,46 +649,46 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 /* global define */
 
 (function () {
-	'use strict';
+  'use strict';
 
-	var hasOwn = {}.hasOwnProperty;
+  var hasOwn = {}.hasOwnProperty;
 
-	function classNames () {
-		var classes = [];
+  function classNames () {
+    var classes = [];
 
-		for (var i = 0; i < arguments.length; i++) {
-			var arg = arguments[i];
-			if (!arg) continue;
+    for (var i = 0; i < arguments.length; i++) {
+      var arg = arguments[i];
+      if (!arg) continue;
 
-			var argType = typeof arg;
+      var argType = typeof arg;
 
-			if (argType === 'string' || argType === 'number') {
-				classes.push(arg);
-			} else if (Array.isArray(arg)) {
-				classes.push(classNames.apply(null, arg));
-			} else if (argType === 'object') {
-				for (var key in arg) {
-					if (hasOwn.call(arg, key) && arg[key]) {
-						classes.push(key);
-					}
-				}
-			}
-		}
+      if (argType === 'string' || argType === 'number') {
+        classes.push(arg);
+      } else if (Array.isArray(arg)) {
+        classes.push(classNames.apply(null, arg));
+      } else if (argType === 'object') {
+        for (var key in arg) {
+          if (hasOwn.call(arg, key) && arg[key]) {
+            classes.push(key);
+          }
+        }
+      }
+    }
 
-		return classes.join(' ');
-	}
+    return classes.join(' ');
+  }
 
-	if (typeof module !== 'undefined' && module.exports) {
-		module.exports = classNames;
-	} else if (true) {
-		// register as 'classnames', consistent with npm package name
-		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
-			return classNames;
-		}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-	} else {
-		window.classNames = classNames;
-	}
+  if (typeof module !== 'undefined' && module.exports) {
+    module.exports = classNames;
+  } else if (true) {
+    // register as 'classnames', consistent with npm package name
+    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
+      return classNames;
+    }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+        __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+  } else {
+    window.classNames = classNames;
+  }
 }());
 
 
@@ -3039,7 +3039,7 @@ var durationWeek = 6048e5;
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * 
+ *
  */
 
 function makeEmptyFunction(arg) {
@@ -6690,82 +6690,82 @@ var hasOwnProperty = Object.prototype.hasOwnProperty;
 var propIsEnumerable = Object.prototype.propertyIsEnumerable;
 
 function toObject(val) {
-	if (val === null || val === undefined) {
-		throw new TypeError('Object.assign cannot be called with null or undefined');
-	}
+  if (val === null || val === undefined) {
+    throw new TypeError('Object.assign cannot be called with null or undefined');
+  }
 
-	return Object(val);
+  return Object(val);
 }
 
 function shouldUseNative() {
-	try {
-		if (!Object.assign) {
-			return false;
-		}
+  try {
+    if (!Object.assign) {
+      return false;
+    }
 
-		// Detect buggy property enumeration order in older V8 versions.
+    // Detect buggy property enumeration order in older V8 versions.
 
-		// https://bugs.chromium.org/p/v8/issues/detail?id=4118
-		var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
-		test1[5] = 'de';
-		if (Object.getOwnPropertyNames(test1)[0] === '5') {
-			return false;
-		}
+    // https://bugs.chromium.org/p/v8/issues/detail?id=4118
+    var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
+    test1[5] = 'de';
+    if (Object.getOwnPropertyNames(test1)[0] === '5') {
+      return false;
+    }
 
-		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
-		var test2 = {};
-		for (var i = 0; i < 10; i++) {
-			test2['_' + String.fromCharCode(i)] = i;
-		}
-		var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
-			return test2[n];
-		});
-		if (order2.join('') !== '0123456789') {
-			return false;
-		}
+    // https://bugs.chromium.org/p/v8/issues/detail?id=3056
+    var test2 = {};
+    for (var i = 0; i < 10; i++) {
+      test2['_' + String.fromCharCode(i)] = i;
+    }
+    var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
+      return test2[n];
+    });
+    if (order2.join('') !== '0123456789') {
+      return false;
+    }
 
-		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
-		var test3 = {};
-		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
-			test3[letter] = letter;
-		});
-		if (Object.keys(Object.assign({}, test3)).join('') !==
-				'abcdefghijklmnopqrst') {
-			return false;
-		}
+    // https://bugs.chromium.org/p/v8/issues/detail?id=3056
+    var test3 = {};
+    'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
+      test3[letter] = letter;
+    });
+    if (Object.keys(Object.assign({}, test3)).join('') !==
+        'abcdefghijklmnopqrst') {
+      return false;
+    }
 
-		return true;
-	} catch (err) {
-		// We don't expect any of the above to throw, but better to be safe.
-		return false;
-	}
+    return true;
+  } catch (err) {
+    // We don't expect any of the above to throw, but better to be safe.
+    return false;
+  }
 }
 
 module.exports = shouldUseNative() ? Object.assign : function (target, source) {
-	var from;
-	var to = toObject(target);
-	var symbols;
+  var from;
+  var to = toObject(target);
+  var symbols;
 
-	for (var s = 1; s < arguments.length; s++) {
-		from = Object(arguments[s]);
+  for (var s = 1; s < arguments.length; s++) {
+    from = Object(arguments[s]);
 
-		for (var key in from) {
-			if (hasOwnProperty.call(from, key)) {
-				to[key] = from[key];
-			}
-		}
+    for (var key in from) {
+      if (hasOwnProperty.call(from, key)) {
+        to[key] = from[key];
+      }
+    }
 
-		if (getOwnPropertySymbols) {
-			symbols = getOwnPropertySymbols(from);
-			for (var i = 0; i < symbols.length; i++) {
-				if (propIsEnumerable.call(from, symbols[i])) {
-					to[symbols[i]] = from[symbols[i]];
-				}
-			}
-		}
-	}
+    if (getOwnPropertySymbols) {
+      symbols = getOwnPropertySymbols(from);
+      for (var i = 0; i < symbols.length; i++) {
+        if (propIsEnumerable.call(from, symbols[i])) {
+          to[symbols[i]] = from[symbols[i]];
+        }
+      }
+    }
+  }
 
-	return to;
+  return to;
 };
 
 
@@ -14142,7 +14142,7 @@ module.exports = getActiveElement;
  * LICENSE file in the root directory of this source tree.
  *
  * @typechecks
- * 
+ *
  */
 
 /*eslint-disable no-self-compare */
@@ -14214,7 +14214,7 @@ module.exports = shallowEqual;
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * 
+ *
  */
 
 var isTextNode = __webpack_require__(233);
@@ -14282,7 +14282,7 @@ module.exports = focusNode;
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -14300,52 +14300,52 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var FormField = function (_Component) {
-	_inherits(FormField, _Component);
+  _inherits(FormField, _Component);
 
-	function FormField() {
-		_classCallCheck(this, FormField);
+  function FormField() {
+    _classCallCheck(this, FormField);
 
-		return _possibleConstructorReturn(this, (FormField.__proto__ || Object.getPrototypeOf(FormField)).apply(this, arguments));
-	}
+    return _possibleConstructorReturn(this, (FormField.__proto__ || Object.getPrototypeOf(FormField)).apply(this, arguments));
+  }
 
-	_createClass(FormField, [{
-		key: 'render',
-		value: function render() {
-			var className = 'form-control ' + this.props.name;
-			var inputType = this.props.inputType;
-			var selectOptions = this.props.selectOptions;
+  _createClass(FormField, [{
+    key: 'render',
+    value: function render() {
+      var className = 'form-control ' + this.props.name;
+      var inputType = this.props.inputType;
+      var selectOptions = this.props.selectOptions;
 
-			if (inputType == 'select') {
-				return _react2.default.createElement(
-					'div',
-					{ className: 'form-group' },
-					this.props.label ? _react2.default.createElement(
-						'label',
-						{ htmlFor: this.props.name },
-						this.props.label
-					) : '',
-					_react2.default.createElement(
-						'select',
-						{ className: className, id: this.props.name, name: this.props.name, onChange: this.props.handleBlur },
-						selectOptions
-					)
-				);
-			} else {
-				return _react2.default.createElement(
-					'div',
-					{ className: 'form-group' },
-					this.props.label ? _react2.default.createElement(
-						'label',
-						{ htmlFor: this.props.name },
-						this.props.label
-					) : '',
-					_react2.default.createElement('input', { className: className, id: this.props.name, name: this.props.name, onBlur: this.props.handleBlur, placeholder: this.props.placeholder, type: '{inputType}' })
-				);
-			}
-		}
-	}]);
+      if (inputType == 'select') {
+        return _react2.default.createElement(
+          'div',
+          { className: 'form-group' },
+          this.props.label ? _react2.default.createElement(
+            'label',
+            { htmlFor: this.props.name },
+            this.props.label
+          ) : '',
+          _react2.default.createElement(
+            'select',
+            { className: className, id: this.props.name, name: this.props.name, onChange: this.props.handleBlur },
+            selectOptions
+          )
+        );
+      } else {
+        return _react2.default.createElement(
+          'div',
+          { className: 'form-group' },
+          this.props.label ? _react2.default.createElement(
+            'label',
+            { htmlFor: this.props.name },
+            this.props.label
+          ) : '',
+          _react2.default.createElement('input', { className: className, id: this.props.name, name: this.props.name, onBlur: this.props.handleBlur, placeholder: this.props.placeholder, type: '{inputType}' })
+        );
+      }
+    }
+  }]);
 
-	return FormField;
+  return FormField;
 }(_react.Component);
 
 exports.default = FormField;
@@ -14393,16 +14393,16 @@ var g;
 
 // This works in non-strict mode
 g = (function() {
-	return this;
+  return this;
 })();
 
 try {
-	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1,eval)("this");
+  // This works if eval is allowed (see CSP)
+  g = g || Function("return this")() || (1,eval)("this");
 } catch(e) {
-	// This works if the window reference is available
-	if(typeof window === "object")
-		g = window;
+  // This works if the window reference is available
+  if(typeof window === "object")
+    g = window;
 }
 
 // g can still be undefined, but nothing to do about it...
@@ -15699,26 +15699,26 @@ module.exports = isBuffer;
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
-	if(!module.webpackPolyfill) {
-		module.deprecate = function() {};
-		module.paths = [];
-		// module.parent = undefined by default
-		if(!module.children) module.children = [];
-		Object.defineProperty(module, "loaded", {
-			enumerable: true,
-			get: function() {
-				return module.l;
-			}
-		});
-		Object.defineProperty(module, "id", {
-			enumerable: true,
-			get: function() {
-				return module.i;
-			}
-		});
-		module.webpackPolyfill = 1;
-	}
-	return module;
+  if(!module.webpackPolyfill) {
+    module.deprecate = function() {};
+    module.paths = [];
+    // module.parent = undefined by default
+    if(!module.children) module.children = [];
+    Object.defineProperty(module, "loaded", {
+      enumerable: true,
+      get: function() {
+        return module.l;
+      }
+    });
+    Object.defineProperty(module, "id", {
+      enumerable: true,
+      get: function() {
+        return module.i;
+      }
+    });
+    module.webpackPolyfill = 1;
+  }
+  return module;
 };
 
 
@@ -22158,12 +22158,12 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var defaults = {
-	age: 25,
-	curInterestRate: 0.05,
-	income: 50000,
-	raisePercent: 3,
-	retirementIncome: 200000,
-	savingPercent: 0.10
+  age: 25,
+  curInterestRate: 0.05,
+  income: 50000,
+  raisePercent: 3,
+  retirementIncome: 200000,
+  savingPercent: 0.10
 };
 
 var form = void 0;
@@ -22172,397 +22172,397 @@ var taxes = _taxeeTaxStatistics2.default[2018];
 var federalStats = taxes.federal;
 
 var App = function (_React$Component) {
-	_inherits(App, _React$Component);
+  _inherits(App, _React$Component);
 
-	function App(props) {
-		_classCallCheck(this, App);
+  function App(props) {
+    _classCallCheck(this, App);
 
-		var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 
-		_this.state = {
-			age: defaults.age,
-			curInterestRate: defaults.curInterestRate,
-			curTotalTaxBurden: getTaxBurden(_this.income, _this.filingType, _this.residence),
-			debt: {
-				loans: [],
-				get total() {
-					return 0;
-				}
-			},
-			filingType: 'single',
-			graphData: [],
-			income: defaults.income,
-			initialIncome: defaults.income,
-			get netIncome() {
-				return applyTax(this.income, this.filingType, this.residence);
-			},
-			nestEgg: 0,
-			raisePercent: defaults.raisePercent,
-			residence: 'california',
-			retirementIncome: defaults.retirementIncome,
-			savingPercent: defaults.savingPercent,
-			savings: 0,
-			startAge: defaults.age,
-			workingYears: 42,
-			yrsRetired: 0
-		};
-		return _this;
-	}
+    _this.state = {
+      age: defaults.age,
+      curInterestRate: defaults.curInterestRate,
+      curTotalTaxBurden: getTaxBurden(_this.income, _this.filingType, _this.residence),
+      debt: {
+        loans: [],
+        get total() {
+          return 0;
+        }
+      },
+      filingType: 'single',
+      graphData: [],
+      income: defaults.income,
+      initialIncome: defaults.income,
+      get netIncome() {
+        return applyTax(this.income, this.filingType, this.residence);
+      },
+      nestEgg: 0,
+      raisePercent: defaults.raisePercent,
+      residence: 'california',
+      retirementIncome: defaults.retirementIncome,
+      savingPercent: defaults.savingPercent,
+      savings: 0,
+      startAge: defaults.age,
+      workingYears: 42,
+      yrsRetired: 0
+    };
+    return _this;
+  }
 
-	_createClass(App, [{
-		key: 'calculate',
-		value: function calculate() {
-			var stateObj = this.state;
-			form = this.form;
+  _createClass(App, [{
+    key: 'calculate',
+    value: function calculate() {
+      var stateObj = this.state;
+      form = this.form;
 
-			this.setState({
-				age: parseInt(form.elements['curAge'].value || defaults.age),
-				curTotalTaxBurden: getTaxBurden(stateObj.income, stateObj.filingType, stateObj.residence),
-				debt: {
-					loans: getLoans(),
-					get total() {
-						var amount = 0;
-						var loans = this.loans;
+      this.setState({
+        age: parseInt(form.elements['curAge'].value || defaults.age),
+        curTotalTaxBurden: getTaxBurden(stateObj.income, stateObj.filingType, stateObj.residence),
+        debt: {
+          loans: getLoans(),
+          get total() {
+            var amount = 0;
+            var loans = this.loans;
 
-						for (var i = 0; i < loans.length; i++) {
-							amount += loans[i].amount;
-						}
+            for (var i = 0; i < loans.length; i++) {
+              amount += loans[i].amount;
+            }
 
-						return amount;
-					}
-				},
-				filingType: form.elements['filingType'].value || 'single',
-				graphData: [],
-				income: parseInt(form.elements['income'].value || defaults.income),
-				initialIncome: parseInt(form.elements['income'].value || defaults.income),
-				get netIncome() {
-					return applyTax(this.income, this.filingType, this.residence);
-				},
-				nestEgg: 0,
-				raisePercent: parseFloat(form.elements['raisePercent'].value || defaults.raisePercent),
-				residence: form.elements['residence'].value || 'california',
-				resultData: [],
-				retirementIncome: parseInt(form.elements['retIncome'].value || defaults.retirementIncome),
-				savingPercent: parseFloat(form.elements['savePercent'].value / 100 || defaults.savingPercent),
-				savings: parseInt(form.elements['savings'].value || 0),
-				startAge: parseInt(form.elements['curAge'].value || defaults.age),
-				get workingYears() {
-					var value = stateObj.workingYears;
+            return amount;
+          }
+        },
+        filingType: form.elements['filingType'].value || 'single',
+        graphData: [],
+        income: parseInt(form.elements['income'].value || defaults.income),
+        initialIncome: parseInt(form.elements['income'].value || defaults.income),
+        get netIncome() {
+          return applyTax(this.income, this.filingType, this.residence);
+        },
+        nestEgg: 0,
+        raisePercent: parseFloat(form.elements['raisePercent'].value || defaults.raisePercent),
+        residence: form.elements['residence'].value || 'california',
+        resultData: [],
+        retirementIncome: parseInt(form.elements['retIncome'].value || defaults.retirementIncome),
+        savingPercent: parseFloat(form.elements['savePercent'].value / 100 || defaults.savingPercent),
+        savings: parseInt(form.elements['savings'].value || 0),
+        startAge: parseInt(form.elements['curAge'].value || defaults.age),
+        get workingYears() {
+          var value = stateObj.workingYears;
 
-					if (form.elements['retAge'].value && form.elements['curAge'].value) {
-						value = parseInt(form.elements['retAge'].value) - parseInt(form.elements['curAge'].value);
-					}
+          if (form.elements['retAge'].value && form.elements['curAge'].value) {
+            value = parseInt(form.elements['retAge'].value) - parseInt(form.elements['curAge'].value);
+          }
 
-					return value;
-				},
-				yrsRetired: 0
-			}, this.work);
-		}
-	}, {
-		key: 'work',
-		value: function work() {
-			var age = this.state.age;
-			var income = this.state.income;
-			var savings = this.state.savings;
-			var netIncome = this.state.netIncome;
+          return value;
+        },
+        yrsRetired: 0
+      }, this.work);
+    }
+  }, {
+    key: 'work',
+    value: function work() {
+      var age = this.state.age;
+      var income = this.state.income;
+      var savings = this.state.savings;
+      var netIncome = this.state.netIncome;
 
-			var graphData = [];
+      var graphData = [];
 
-			for (var year = 1; year <= this.state.workingYears; year++) {
-				var disposibleIncome = netIncome * this.state.savingPercent;
+      for (var year = 1; year <= this.state.workingYears; year++) {
+        var disposibleIncome = netIncome * this.state.savingPercent;
 
-				if (this.state.debt.total) {
-					disposibleIncome = payOffDebt(disposibleIncome);
-				}
+        if (this.state.debt.total) {
+          disposibleIncome = payOffDebt(disposibleIncome);
+        }
 
-				savings = interest(savings + disposibleIncome, this.state.curInterestRate);
+        savings = interest(savings + disposibleIncome, this.state.curInterestRate);
 
-				income = giveRaise(income, this.state.raisePercent);
-				netIncome = applyTax(income, this.state.filingType, this.state.residence).toFixed(2);
+        income = giveRaise(income, this.state.raisePercent);
+        netIncome = applyTax(income, this.state.filingType, this.state.residence).toFixed(2);
 
-				graphData.push({ Age: age, Savings: savings.toFixed(2), 'Net Income': applyTax(income.toFixed(2)) });
+        graphData.push({ Age: age, Savings: savings.toFixed(2), 'Net Income': applyTax(income.toFixed(2)) });
 
-				age++;
-			}
+        age++;
+      }
 
-			this.setState({
-				age: age,
-				income: income,
-				nestEgg: savings,
-				savings: savings,
-				graphData: graphData
-			}, this.retire);
-		}
+      this.setState({
+        age: age,
+        income: income,
+        nestEgg: savings,
+        savings: savings,
+        graphData: graphData
+      }, this.retire);
+    }
 
-		// finish this function
+    // finish this function
 
-	}, {
-		key: 'payOffDebt',
-		value: function payOffDebt(amount) {
-			// if (this.state.savings) {
-			// 	amount += this.state.savings;
-			// }
+  }, {
+    key: 'payOffDebt',
+    value: function payOffDebt(amount) {
+      // if (this.state.savings) {
+      //  amount += this.state.savings;
+      // }
 
-			// this.state.debt.loans = [];
+      // this.state.debt.loans = [];
 
-			// let leftover = amount - this.state.debt.total;
+      // let leftover = amount - this.state.debt.total;
 
-			// return (leftover > 0) ? leftover : 0;
-			return amount;
-		}
-	}, {
-		key: 'retire',
-		value: function retire() {
-			var age = this.state.age;
-			var graphData = this.state.graphData;
-			var savings = this.state.savings;
-			var yrsRetired = this.state.yrsRetired;
+      // return (leftover > 0) ? leftover : 0;
+      return amount;
+    }
+  }, {
+    key: 'retire',
+    value: function retire() {
+      var age = this.state.age;
+      var graphData = this.state.graphData;
+      var savings = this.state.savings;
+      var yrsRetired = this.state.yrsRetired;
 
-			do {
-				savings = interest(savings, this.state.curInterestRate) - this.state.retirementIncome;
-				graphData.push({ Age: age, Savings: savings.toFixed(2), 'Net Income': 0 });
-				age++;
-				yrsRetired++;
-			} while (savings > this.state.retirementIncome);
+      do {
+        savings = interest(savings, this.state.curInterestRate) - this.state.retirementIncome;
+        graphData.push({ Age: age, Savings: savings.toFixed(2), 'Net Income': 0 });
+        age++;
+        yrsRetired++;
+      } while (savings > this.state.retirementIncome);
 
-			this.setState({
-				age: age,
-				graphData: graphData,
-				savings: savings,
-				yrsRetired: yrsRetired
-			});
-		}
-	}, {
-		key: 'render',
-		value: function render() {
-			var _this2 = this;
+      this.setState({
+        age: age,
+        graphData: graphData,
+        savings: savings,
+        yrsRetired: yrsRetired
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
 
-			var residenceOptions = this.props.residences.map(function (residence) {
-				return _react2.default.createElement(
-					'option',
-					{ key: residence, value: residence },
-					residence
-				);
-			});
+      var residenceOptions = this.props.residences.map(function (residence) {
+        return _react2.default.createElement(
+          'option',
+          { key: residence, value: residence },
+          residence
+        );
+      });
 
-			var filingTypeOptions = this.props.filingTypes.map(function (filingType) {
-				return _react2.default.createElement(
-					'option',
-					{ key: filingType, value: filingType },
-					filingType
-				);
-			});
+      var filingTypeOptions = this.props.filingTypes.map(function (filingType) {
+        return _react2.default.createElement(
+          'option',
+          { key: filingType, value: filingType },
+          filingType
+        );
+      });
 
-			return _react2.default.createElement(
-				'div',
-				{ className: 'wrapper' },
-				_react2.default.createElement(
-					'form',
-					{ action: 'javascript:;', method: 'POST', name: 'retirement', ref: function ref(fm) {
-							return _this2.form = fm;
-						} },
-					_react2.default.createElement(
-						'legend',
-						null,
-						'Info'
-					),
-					_react2.default.createElement(_FormField2.default, { handleBlur: function handleBlur() {
-							return _this2.calculate();
-						}, label: 'Annual Income (Gross)', name: 'income', placeholder: '$50000', inputType: 'number' }),
-					_react2.default.createElement(_FormField2.default, { handleBlur: function handleBlur() {
-							return _this2.calculate();
-						}, label: 'Current Age', name: 'curAge', placeholder: '25', inputType: 'number' }),
-					_react2.default.createElement(_FormField2.default, { handleBlur: function handleBlur() {
-							return _this2.calculate();
-						}, label: 'Target Retirement Age', name: 'retAge', placeholder: '67', inputType: 'number' }),
-					_react2.default.createElement(_FormField2.default, { handleBlur: function handleBlur() {
-							return _this2.calculate();
-						}, label: 'Current Savings', name: 'savings', placeholder: '$0', inputType: 'number' }),
-					_react2.default.createElement(_FormField2.default, { handleBlur: function handleBlur() {
-							return _this2.calculate();
-						}, label: 'Percent of Net income saved', name: 'savePercent', placeholder: '10%', inputType: 'number' }),
-					_react2.default.createElement(_FormField2.default, { handleBlur: function handleBlur() {
-							return _this2.calculate();
-						}, label: 'Expected average raise', name: 'raisePercent', placeholder: '3%', inputType: 'number' }),
-					_react2.default.createElement(_FormField2.default, { handleBlur: function handleBlur() {
-							return _this2.calculate();
-						}, label: 'Target Retirement Income', name: 'retIncome', placeholder: '$200000', inputType: 'number' }),
-					_react2.default.createElement(_FormField2.default, { handleBlur: function handleBlur() {
-							return _this2.calculate();
-						}, label: 'Current State of Residence', name: 'residence', placeholder: 'california', inputType: 'select', selectOptions: residenceOptions }),
-					_react2.default.createElement(_FormField2.default, { handleBlur: function handleBlur() {
-							return _this2.calculate();
-						}, label: 'Tax Filing Type', name: 'filingType', placeholder: 'single', inputType: 'select', selectOptions: filingTypeOptions }),
-					_react2.default.createElement(
-						'label',
-						null,
-						'Debt'
-					),
-					_react2.default.createElement(_Debt2.default, null),
-					_react2.default.createElement(
-						'button',
-						{ type: 'submit', className: 'btn btn-primary', onClick: function onClick() {
-								return _this2.calculate();
-							} },
-						'Calculate'
-					)
-				),
-				this.state.graphData.length > 0 && _react2.default.createElement(
-					'div',
-					null,
-					_react2.default.createElement(_ReactChart2.default, {
-						data: this.state.graphData,
-						retirementAge: this.state.startAge + this.state.workingYears,
-						retirementIncome: this.state.retirementIncome
-					}),
-					_react2.default.createElement(_Message2.default, {
-						curInterestRate: this.state.curInterestRate,
-						initialIncome: this.state.initialIncome,
-						nestEgg: this.state.nestEgg,
-						raisePercent: this.state.raisePercent,
-						retirementIncome: this.state.retirementIncome,
-						savingPercent: this.state.savingPercent,
-						startAge: this.state.startAge,
-						workingYears: this.state.workingYears,
-						yrsRetired: this.state.yrsRetired
-					})
-				)
-			);
-		}
-	}]);
+      return _react2.default.createElement(
+        'div',
+        { className: 'wrapper' },
+        _react2.default.createElement(
+          'form',
+          { action: 'javascript:;', method: 'POST', name: 'retirement', ref: function ref(fm) {
+              return _this2.form = fm;
+            } },
+          _react2.default.createElement(
+            'legend',
+            null,
+            'Info'
+          ),
+          _react2.default.createElement(_FormField2.default, { handleBlur: function handleBlur() {
+              return _this2.calculate();
+            }, label: 'Annual Income (Gross)', name: 'income', placeholder: '$50000', inputType: 'number' }),
+          _react2.default.createElement(_FormField2.default, { handleBlur: function handleBlur() {
+              return _this2.calculate();
+            }, label: 'Current Age', name: 'curAge', placeholder: '25', inputType: 'number' }),
+          _react2.default.createElement(_FormField2.default, { handleBlur: function handleBlur() {
+              return _this2.calculate();
+            }, label: 'Target Retirement Age', name: 'retAge', placeholder: '67', inputType: 'number' }),
+          _react2.default.createElement(_FormField2.default, { handleBlur: function handleBlur() {
+              return _this2.calculate();
+            }, label: 'Current Savings', name: 'savings', placeholder: '$0', inputType: 'number' }),
+          _react2.default.createElement(_FormField2.default, { handleBlur: function handleBlur() {
+              return _this2.calculate();
+            }, label: 'Percent of Net income saved', name: 'savePercent', placeholder: '10%', inputType: 'number' }),
+          _react2.default.createElement(_FormField2.default, { handleBlur: function handleBlur() {
+              return _this2.calculate();
+            }, label: 'Expected average raise', name: 'raisePercent', placeholder: '3%', inputType: 'number' }),
+          _react2.default.createElement(_FormField2.default, { handleBlur: function handleBlur() {
+              return _this2.calculate();
+            }, label: 'Target Retirement Income', name: 'retIncome', placeholder: '$200000', inputType: 'number' }),
+          _react2.default.createElement(_FormField2.default, { handleBlur: function handleBlur() {
+              return _this2.calculate();
+            }, label: 'Current State of Residence', name: 'residence', placeholder: 'california', inputType: 'select', selectOptions: residenceOptions }),
+          _react2.default.createElement(_FormField2.default, { handleBlur: function handleBlur() {
+              return _this2.calculate();
+            }, label: 'Tax Filing Type', name: 'filingType', placeholder: 'single', inputType: 'select', selectOptions: filingTypeOptions }),
+          _react2.default.createElement(
+            'label',
+            null,
+            'Debt'
+          ),
+          _react2.default.createElement(_Debt2.default, null),
+          _react2.default.createElement(
+            'button',
+            { type: 'submit', className: 'btn btn-primary', onClick: function onClick() {
+                return _this2.calculate();
+              } },
+            'Calculate'
+          )
+        ),
+        this.state.graphData.length > 0 && _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(_ReactChart2.default, {
+            data: this.state.graphData,
+            retirementAge: this.state.startAge + this.state.workingYears,
+            retirementIncome: this.state.retirementIncome
+          }),
+          _react2.default.createElement(_Message2.default, {
+            curInterestRate: this.state.curInterestRate,
+            initialIncome: this.state.initialIncome,
+            nestEgg: this.state.nestEgg,
+            raisePercent: this.state.raisePercent,
+            retirementIncome: this.state.retirementIncome,
+            savingPercent: this.state.savingPercent,
+            startAge: this.state.startAge,
+            workingYears: this.state.workingYears,
+            yrsRetired: this.state.yrsRetired
+          })
+        )
+      );
+    }
+  }]);
 
-	return App;
+  return App;
 }(_react2.default.Component);
 
 App.defaultProps = {
-	residences: ['california', 'chicago', 'ohio'],
-	filingTypes: ['single', 'married', 'married_separately', 'head_of_household']
+  residences: ['california', 'chicago', 'ohio'],
+  filingTypes: ['single', 'married', 'married_separately', 'head_of_household']
 };
 
 
 _reactDom2.default.render(_react2.default.createElement(App, null), document.querySelector('.app'));
 
 function applyTax(amount, filingType, residence, rate) {
-	rate = rate || getTaxBurden(amount, filingType, residence);
+  rate = rate || getTaxBurden(amount, filingType, residence);
 
-	if (rate > 1) {
-		rate = rate / 100;
-	}
+  if (rate > 1) {
+    rate = rate / 100;
+  }
 
-	var inverse = 1 - rate;
+  var inverse = 1 - rate;
 
-	return amount * inverse;
+  return amount * inverse;
 }
 
 function getTaxBurden(income, filingType, residence) {
-	var rate = 39;
-	var curAmount = 0;
+  var rate = 39;
+  var curAmount = 0;
 
-	var federalTaxes = federalStats.tax_withholding_percentage_method_tables.annual[filingType];
+  var federalTaxes = federalStats.tax_withholding_percentage_method_tables.annual[filingType];
 
-	var federalTaxBrackets = [];
+  var federalTaxBrackets = [];
 
-	if (federalTaxes) {
-		federalTaxBrackets = federalTaxes.income_tax_brackets;
-	}
+  if (federalTaxes) {
+    federalTaxBrackets = federalTaxes.income_tax_brackets;
+  }
 
-	for (var i = 0; i < federalTaxBrackets.length; i++) {
-		var curBracket = federalTaxBrackets[i];
-		var nextBracket = federalTaxBrackets[i + 1];
+  for (var i = 0; i < federalTaxBrackets.length; i++) {
+    var curBracket = federalTaxBrackets[i];
+    var nextBracket = federalTaxBrackets[i + 1];
 
-		var incomeFloor = Number(curBracket.amount);
-		var incomeCeiling = income;
+    var incomeFloor = Number(curBracket.amount);
+    var incomeCeiling = income;
 
-		if (i + 1 < federalTaxBrackets.length) {
-			incomeCeiling = Number(nextBracket.amount);
-		}
+    if (i + 1 < federalTaxBrackets.length) {
+      incomeCeiling = Number(nextBracket.amount);
+    }
 
-		var marginal_rate = Number(curBracket.marginal_rate) / 100;
+    var marginal_rate = Number(curBracket.marginal_rate) / 100;
 
-		if (incomeCeiling > income) {
-			curAmount += (income - curBracket.amount) * marginal_rate;
+    if (incomeCeiling > income) {
+      curAmount += (income - curBracket.amount) * marginal_rate;
 
-			break;
-		}
+      break;
+    }
 
-		curAmount += (incomeCeiling - incomeFloor) * marginal_rate;
-	}
+    curAmount += (incomeCeiling - incomeFloor) * marginal_rate;
+  }
 
-	var stateTaxes = taxes[residence];
+  var stateTaxes = taxes[residence];
 
-	var stateTaxBrackets = [];
+  var stateTaxBrackets = [];
 
-	if (stateTaxes) {
-		stateTaxBrackets = stateTaxes[filingType].income_tax_brackets;
-	}
+  if (stateTaxes) {
+    stateTaxBrackets = stateTaxes[filingType].income_tax_brackets;
+  }
 
-	for (var _i = 0; _i < stateTaxBrackets.length; _i++) {
-		var _curBracket = stateTaxBrackets[_i];
-		var _nextBracket = stateTaxBrackets[_i + 1];
+  for (var _i = 0; _i < stateTaxBrackets.length; _i++) {
+    var _curBracket = stateTaxBrackets[_i];
+    var _nextBracket = stateTaxBrackets[_i + 1];
 
-		var _incomeFloor = Number(_curBracket.bracket);
-		var _incomeCeiling = income;
+    var _incomeFloor = Number(_curBracket.bracket);
+    var _incomeCeiling = income;
 
-		if (_i + 1 < stateTaxBrackets.length) {
-			_incomeCeiling = Number(_nextBracket.bracket);
-		}
+    if (_i + 1 < stateTaxBrackets.length) {
+      _incomeCeiling = Number(_nextBracket.bracket);
+    }
 
-		var _marginal_rate = Number(_curBracket.marginal_rate) / 100;
+    var _marginal_rate = Number(_curBracket.marginal_rate) / 100;
 
-		if (_incomeCeiling > income) {
-			curAmount += (income - _curBracket.bracket) * _marginal_rate;
+    if (_incomeCeiling > income) {
+      curAmount += (income - _curBracket.bracket) * _marginal_rate;
 
-			break;
-		}
+      break;
+    }
 
-		curAmount += (_incomeCeiling - _incomeFloor) * _marginal_rate;
-	}
+    curAmount += (_incomeCeiling - _incomeFloor) * _marginal_rate;
+  }
 
-	rate = Math.round(curAmount / income * 100);
+  rate = Math.round(curAmount / income * 100);
 
-	return rate;
+  return rate;
 }
 
 function getLoans() {
-	var loans = [];
+  var loans = [];
 
-	if (form) {
-		var loanNodes = form.querySelectorAll('.debt-group');
+  if (form) {
+    var loanNodes = form.querySelectorAll('.debt-group');
 
-		loanNodes.forEach(function (item) {
-			var loan = {
-				amount: parseInt(item.querySelector('.debt').value),
-				interestRate: parseInt(item.querySelector('.interest').value)
-			};
+    loanNodes.forEach(function (item) {
+      var loan = {
+        amount: parseInt(item.querySelector('.debt').value),
+        interestRate: parseInt(item.querySelector('.interest').value)
+      };
 
-			loans.push(loan);
-		});
-	}
+      loans.push(loan);
+    });
+  }
 
-	return loans;
+  return loans;
 }
 
 function giveRaise(salary, percent) {
-	if (!percent) {
-		return;
-	}
+  if (!percent) {
+    return;
+  }
 
-	if (percent >= 1) {
-		percent = percent / 100;
-	}
+  if (percent >= 1) {
+    percent = percent / 100;
+  }
 
-	var raise = 1 + percent;
+  var raise = 1 + percent;
 
-	return salary * raise;
+  return salary * raise;
 }
 
 function interest(amount, rate) {
-	rate = rate || 0;
+  rate = rate || 0;
 
-	if (rate < 1) {
-		rate += 1;
-	}
-	return amount * rate;
+  if (rate < 1) {
+    rate += 1;
+  }
+  return amount * rate;
 }
 
 /***/ }),
@@ -23943,7 +23943,7 @@ var React = {
 
 
 var React$2 = Object.freeze({
-	default: React
+  default: React
 });
 
 var React$3 = ( React$2 && React ) || React$2;
@@ -25034,13 +25034,13 @@ function injectEventPluginsByName(injectedNamesToPlugins) {
 }
 
 var EventPluginRegistry = Object.freeze({
-	plugins: plugins,
-	eventNameDispatchConfigs: eventNameDispatchConfigs,
-	registrationNameModules: registrationNameModules,
-	registrationNameDependencies: registrationNameDependencies,
-	possibleRegistrationNames: possibleRegistrationNames,
-	injectEventPluginOrder: injectEventPluginOrder,
-	injectEventPluginsByName: injectEventPluginsByName
+  plugins: plugins,
+  eventNameDispatchConfigs: eventNameDispatchConfigs,
+  registrationNameModules: registrationNameModules,
+  registrationNameDependencies: registrationNameDependencies,
+  possibleRegistrationNames: possibleRegistrationNames,
+  injectEventPluginOrder: injectEventPluginOrder,
+  injectEventPluginsByName: injectEventPluginsByName
 });
 
 var getFiberCurrentPropsFromNode = null;
@@ -25374,11 +25374,11 @@ function processEventQueue(simulated) {
 }
 
 var EventPluginHub = Object.freeze({
-	injection: injection$1,
-	getListener: getListener,
-	extractEvents: extractEvents,
-	enqueueEvents: enqueueEvents,
-	processEventQueue: processEventQueue
+  injection: injection$1,
+  getListener: getListener,
+  extractEvents: extractEvents,
+  enqueueEvents: enqueueEvents,
+  processEventQueue: processEventQueue
 });
 
 var IndeterminateComponent = 0; // Before we know whether it is functional or class
@@ -25477,12 +25477,12 @@ function updateFiberProps$1(node, props) {
 }
 
 var ReactDOMComponentTree = Object.freeze({
-	precacheFiberNode: precacheFiberNode$1,
-	getClosestInstanceFromNode: getClosestInstanceFromNode,
-	getInstanceFromNode: getInstanceFromNode$1,
-	getNodeFromInstance: getNodeFromInstance$1,
-	getFiberCurrentPropsFromNode: getFiberCurrentPropsFromNode$1,
-	updateFiberProps: updateFiberProps$1
+  precacheFiberNode: precacheFiberNode$1,
+  getClosestInstanceFromNode: getClosestInstanceFromNode,
+  getInstanceFromNode: getInstanceFromNode$1,
+  getNodeFromInstance: getNodeFromInstance$1,
+  getFiberCurrentPropsFromNode: getFiberCurrentPropsFromNode$1,
+  updateFiberProps: updateFiberProps$1
 });
 
 function getParent(inst) {
@@ -25719,10 +25719,10 @@ function accumulateDirectDispatches(events) {
 }
 
 var EventPropagators = Object.freeze({
-	accumulateTwoPhaseDispatches: accumulateTwoPhaseDispatches,
-	accumulateTwoPhaseDispatchesSkipTarget: accumulateTwoPhaseDispatchesSkipTarget,
-	accumulateEnterLeaveDispatches: accumulateEnterLeaveDispatches,
-	accumulateDirectDispatches: accumulateDirectDispatches
+  accumulateTwoPhaseDispatches: accumulateTwoPhaseDispatches,
+  accumulateTwoPhaseDispatchesSkipTarget: accumulateTwoPhaseDispatchesSkipTarget,
+  accumulateEnterLeaveDispatches: accumulateEnterLeaveDispatches,
+  accumulateDirectDispatches: accumulateDirectDispatches
 });
 
 var contentKey = null;
@@ -26558,9 +26558,9 @@ function restoreStateIfNeeded() {
 }
 
 var ReactControlledComponent = Object.freeze({
-	injection: injection$3,
-	enqueueStateRestore: enqueueStateRestore,
-	restoreStateIfNeeded: restoreStateIfNeeded
+  injection: injection$3,
+  enqueueStateRestore: enqueueStateRestore,
+  restoreStateIfNeeded: restoreStateIfNeeded
 });
 
 // Used as a way to call batchedUpdates when we don't have a reference to
@@ -27682,14 +27682,14 @@ function dispatchEvent(topLevelType, nativeEvent) {
 }
 
 var ReactDOMEventListener = Object.freeze({
-	get _enabled () { return _enabled; },
-	get _handleTopLevel () { return _handleTopLevel; },
-	setHandleTopLevel: setHandleTopLevel,
-	setEnabled: setEnabled,
-	isEnabled: isEnabled,
-	trapBubbledEvent: trapBubbledEvent,
-	trapCapturedEvent: trapCapturedEvent,
-	dispatchEvent: dispatchEvent
+  get _enabled () { return _enabled; },
+  get _handleTopLevel () { return _handleTopLevel; },
+  setHandleTopLevel: setHandleTopLevel,
+  setEnabled: setEnabled,
+  isEnabled: isEnabled,
+  trapBubbledEvent: trapBubbledEvent,
+  trapCapturedEvent: trapCapturedEvent,
+  dispatchEvent: dispatchEvent
 });
 
 /**
@@ -29833,7 +29833,7 @@ var AsyncUpdates = 1;
   try {
     var nonExtensibleObject = Object.preventExtensions({});
     /* eslint-disable no-new */
-    
+
     /* eslint-enable no-new */
   } catch (e) {
     // TODO: Consider warning about bad polyfills
@@ -35540,7 +35540,7 @@ var ReactFiberReconciler$1 = function (config) {
 };
 
 var ReactFiberReconciler$2 = Object.freeze({
-	default: ReactFiberReconciler$1
+  default: ReactFiberReconciler$1
 });
 
 var ReactFiberReconciler$3 = ( ReactFiberReconciler$2 && ReactFiberReconciler$1 ) || ReactFiberReconciler$2;
@@ -35963,7 +35963,7 @@ function setValueForProperty(node, name, value) {
   }
 
   {
-    
+
   }
 }
 
@@ -35978,7 +35978,7 @@ function setValueForAttribute(node, name, value) {
   }
 
   {
-    
+
   }
 }
 
@@ -38773,19 +38773,19 @@ function restoreControlledState(domElement, tag, props) {
 }
 
 var ReactDOMFiberComponent = Object.freeze({
-	createElement: createElement$1,
-	createTextNode: createTextNode$1,
-	setInitialProperties: setInitialProperties$1,
-	diffProperties: diffProperties$1,
-	updateProperties: updateProperties$1,
-	diffHydratedProperties: diffHydratedProperties$1,
-	diffHydratedText: diffHydratedText$1,
-	warnForUnmatchedText: warnForUnmatchedText$1,
-	warnForDeletedHydratableElement: warnForDeletedHydratableElement$1,
-	warnForDeletedHydratableText: warnForDeletedHydratableText$1,
-	warnForInsertedHydratedElement: warnForInsertedHydratedElement$1,
-	warnForInsertedHydratedText: warnForInsertedHydratedText$1,
-	restoreControlledState: restoreControlledState
+  createElement: createElement$1,
+  createTextNode: createTextNode$1,
+  setInitialProperties: setInitialProperties$1,
+  diffProperties: diffProperties$1,
+  updateProperties: updateProperties$1,
+  diffHydratedProperties: diffHydratedProperties$1,
+  diffHydratedText: diffHydratedText$1,
+  warnForUnmatchedText: warnForUnmatchedText$1,
+  warnForDeletedHydratableElement: warnForDeletedHydratableElement$1,
+  warnForDeletedHydratableText: warnForDeletedHydratableText$1,
+  warnForInsertedHydratedElement: warnForInsertedHydratedElement$1,
+  warnForInsertedHydratedText: warnForInsertedHydratedText$1,
+  restoreControlledState: restoreControlledState
 });
 
 // TODO: direct imports like some-package/src/* are bad. Fix me.
@@ -39637,7 +39637,7 @@ var foundDevTools = DOMRenderer.injectIntoDevTools({
 
 
 var ReactDOM$2 = Object.freeze({
-	default: ReactDOM
+  default: ReactDOM
 });
 
 var ReactDOM$3 = ( ReactDOM$2 && ReactDOM ) || ReactDOM$2;
@@ -39828,7 +39828,7 @@ marginal_rate:4},{bracket:11150,marginal_rate:5.84},{bracket:22230,marginal_rate
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -39850,27 +39850,27 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Debt = function (_Component) {
-	_inherits(Debt, _Component);
+  _inherits(Debt, _Component);
 
-	function Debt() {
-		_classCallCheck(this, Debt);
+  function Debt() {
+    _classCallCheck(this, Debt);
 
-		return _possibleConstructorReturn(this, (Debt.__proto__ || Object.getPrototypeOf(Debt)).apply(this, arguments));
-	}
+    return _possibleConstructorReturn(this, (Debt.__proto__ || Object.getPrototypeOf(Debt)).apply(this, arguments));
+  }
 
-	_createClass(Debt, [{
-		key: 'render',
-		value: function render() {
-			return _react2.default.createElement(
-				'div',
-				{ className: 'debt-group' },
-				_react2.default.createElement(_FormField2.default, { name: 'debt', placeholder: 'Loan Balance' }),
-				_react2.default.createElement(_FormField2.default, { name: 'interest', placeholder: 'Interest Rate' })
-			);
-		}
-	}]);
+  _createClass(Debt, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: 'debt-group' },
+        _react2.default.createElement(_FormField2.default, { name: 'debt', placeholder: 'Loan Balance' }),
+        _react2.default.createElement(_FormField2.default, { name: 'interest', placeholder: 'Interest Rate' })
+      );
+    }
+  }]);
 
-	return Debt;
+  return Debt;
 }(_react.Component);
 
 exports.default = Debt;
@@ -39883,7 +39883,7 @@ exports.default = Debt;
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -39901,46 +39901,46 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Message = function (_Component) {
-	_inherits(Message, _Component);
+  _inherits(Message, _Component);
 
-	function Message() {
-		_classCallCheck(this, Message);
+  function Message() {
+    _classCallCheck(this, Message);
 
-		return _possibleConstructorReturn(this, (Message.__proto__ || Object.getPrototypeOf(Message)).apply(this, arguments));
-	}
+    return _possibleConstructorReturn(this, (Message.__proto__ || Object.getPrototypeOf(Message)).apply(this, arguments));
+  }
 
-	_createClass(Message, [{
-		key: "render",
-		value: function render() {
-			return _react2.default.createElement(
-				"p",
-				{ className: "results-message" },
-				"Your retirement savings would be $",
-				this.props.nestEgg.toFixed(2),
-				". It would last ",
-				this.props.yrsRetired,
-				" years at $",
-				this.props.retirementIncome,
-				" per year if you started work at age ",
-				this.props.startAge,
-				" and retired at ",
-				this.props.startAge + this.props.workingYears,
-				" with a starting salery of $",
-				this.props.initialIncome,
-				" and a ",
-				this.props.raisePercent,
-				"% raise annually while saving ",
-				this.props.savingPercent * 100,
-				"% of your net income each year that accures interest at ",
-				this.props.curInterestRate * 100,
-				"%. Better not live past ",
-				this.props.yrsRetired + this.props.workingYears + 25,
-				"."
-			);
-		}
-	}]);
+  _createClass(Message, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "p",
+        { className: "results-message" },
+        "Your retirement savings would be $",
+        this.props.nestEgg.toFixed(2),
+        ". It would last ",
+        this.props.yrsRetired,
+        " years at $",
+        this.props.retirementIncome,
+        " per year if you started work at age ",
+        this.props.startAge,
+        " and retired at ",
+        this.props.startAge + this.props.workingYears,
+        " with a starting salery of $",
+        this.props.initialIncome,
+        " and a ",
+        this.props.raisePercent,
+        "% raise annually while saving ",
+        this.props.savingPercent * 100,
+        "% of your net income each year that accures interest at ",
+        this.props.curInterestRate * 100,
+        "%. Better not live past ",
+        this.props.yrsRetired + this.props.workingYears + 25,
+        "."
+      );
+    }
+  }]);
 
-	return Message;
+  return Message;
 }(_react.Component);
 
 exports.default = Message;
@@ -39953,7 +39953,7 @@ exports.default = Message;
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -39973,53 +39973,53 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var ReactChart = function (_React$Component) {
-	_inherits(ReactChart, _React$Component);
+  _inherits(ReactChart, _React$Component);
 
-	function ReactChart(props) {
-		_classCallCheck(this, ReactChart);
+  function ReactChart(props) {
+    _classCallCheck(this, ReactChart);
 
-		var _this = _possibleConstructorReturn(this, (ReactChart.__proto__ || Object.getPrototypeOf(ReactChart)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (ReactChart.__proto__ || Object.getPrototypeOf(ReactChart)).call(this, props));
 
-		_this.state = {
-			width: "100%",
-			height: 700,
-			layout: 'horizontal',
-			margins: { left: 75, right: 100, top: 50, bottom: 50 }
-		};
-		return _this;
-	}
+    _this.state = {
+      width: "100%",
+      height: 700,
+      layout: 'horizontal',
+      margins: { left: 75, right: 100, top: 50, bottom: 50 }
+    };
+    return _this;
+  }
 
-	_createClass(ReactChart, [{
-		key: 'render',
-		value: function render() {
-			if (this.props.data.length == 0) {
-				return null;
-			}
+  _createClass(ReactChart, [{
+    key: 'render',
+    value: function render() {
+      if (this.props.data.length == 0) {
+        return null;
+      }
 
-			console.log('this.props:', this.props);
+      console.log('this.props:', this.props);
 
-			return _react2.default.createElement(
-				_recharts.ResponsiveContainer,
-				{ height: this.state.height, width: this.state.width },
-				_react2.default.createElement(
-					_recharts.LineChart,
-					{
-						margin: this.state.margins,
-						data: this.props.data },
-					_react2.default.createElement(_recharts.CartesianGrid, { strokeDasharray: '3 3' }),
-					_react2.default.createElement(_recharts.Legend, null),
-					_react2.default.createElement(_recharts.ReferenceLine, { x: this.props.retirementAge, stroke: 'green', label: "Retirement Age: " + this.props.retirementAge }),
-					_react2.default.createElement(_recharts.Line, { type: 'monotone', dataKey: 'Net Income', stroke: '#8884d8' }),
-					_react2.default.createElement(_recharts.Line, { type: 'monotone', dataKey: 'Savings', stroke: '#82ca9d' }),
-					_react2.default.createElement(_recharts.Tooltip, null),
-					_react2.default.createElement(_recharts.XAxis, { dataKey: 'Age' }),
-					_react2.default.createElement(_recharts.YAxis, { domain: [0, 'dataMax + 1000000'] })
-				)
-			);
-		}
-	}]);
+      return _react2.default.createElement(
+        _recharts.ResponsiveContainer,
+        { height: this.state.height, width: this.state.width },
+        _react2.default.createElement(
+          _recharts.LineChart,
+          {
+            margin: this.state.margins,
+            data: this.props.data },
+          _react2.default.createElement(_recharts.CartesianGrid, { strokeDasharray: '3 3' }),
+          _react2.default.createElement(_recharts.Legend, null),
+          _react2.default.createElement(_recharts.ReferenceLine, { x: this.props.retirementAge, stroke: 'green', label: "Retirement Age: " + this.props.retirementAge }),
+          _react2.default.createElement(_recharts.Line, { type: 'monotone', dataKey: 'Net Income', stroke: '#8884d8' }),
+          _react2.default.createElement(_recharts.Line, { type: 'monotone', dataKey: 'Savings', stroke: '#82ca9d' }),
+          _react2.default.createElement(_recharts.Tooltip, null),
+          _react2.default.createElement(_recharts.XAxis, { dataKey: 'Age' }),
+          _react2.default.createElement(_recharts.YAxis, { domain: [0, 'dataMax + 1000000'] })
+        )
+      );
+    }
+  }]);
 
-	return ReactChart;
+  return ReactChart;
 }(_react2.default.Component);
 
 exports.default = ReactChart;
@@ -48899,43 +48899,43 @@ function range(a, b, str) {
 
 var Mexp=__webpack_require__(420);
 Mexp.prototype.formulaEval = function () {
-	"use strict";
-	var stack=[],pop1,pop2,pop3;
-	var disp=[];
-	var temp='';
-	var arr=this.value;
-	for(var i=0;i<arr.length;i++){
-		if(arr[i].type===1||arr[i].type===3){
-			disp.push({value:arr[i].type===3?arr[i].show:arr[i].value,type:1});
-		}
-		else if(arr[i].type===13){
-			disp.push({value:arr[i].show,type:1});
-		}
-		else if(arr[i].type===0){
-			disp[disp.length-1]={value:arr[i].show+(arr[i].show!="-"?"(":"")+disp[disp.length-1].value+(arr[i].show!="-"?")":""),type:0};
-		}
-		else if(arr[i].type===7){
-			disp[disp.length-1]={value:(disp[disp.length-1].type!=1?"(":"")+disp[disp.length-1].value+(disp[disp.length-1].type!=1?")":"")+arr[i].show,type:7};
-		}
-		else if(arr[i].type===10){
-			pop1=disp.pop();
-			pop2=disp.pop();
-			if(arr[i].show==='P'||arr[i].show==='C')disp.push({value:"<sup>"+pop2.value+"</sup>"+arr[i].show+"<sub>"+pop1.value+"</sub>",type:10});
-			else disp.push({value:(pop2.type!=1?"(":"")+pop2.value+(pop2.type!=1?")":"")+"<sup>"+pop1.value+"</sup>",type:1});
-		}
-		else if(arr[i].type===2||arr[i].type===9){
-			pop1=disp.pop();
-			pop2=disp.pop();
-			disp.push({value:(pop2.type!=1?"(":"")+pop2.value+(pop2.type!=1?")":"")+arr[i].show+(pop1.type!=1?"(":"")+pop1.value+(pop1.type!=1?")":""),type:arr[i].type});
-		}
-		else if(arr[i].type===12){
-			pop1=disp.pop();
-			pop2=disp.pop();
-			pop3=disp.pop();
-			disp.push({value:arr[i].show+"("+pop3.value+","+pop2.value+","+pop1.value+")",type:12});
-		}
-	}
-	return disp[0].value;
+  "use strict";
+  var stack=[],pop1,pop2,pop3;
+  var disp=[];
+  var temp='';
+  var arr=this.value;
+  for(var i=0;i<arr.length;i++){
+    if(arr[i].type===1||arr[i].type===3){
+      disp.push({value:arr[i].type===3?arr[i].show:arr[i].value,type:1});
+    }
+    else if(arr[i].type===13){
+      disp.push({value:arr[i].show,type:1});
+    }
+    else if(arr[i].type===0){
+      disp[disp.length-1]={value:arr[i].show+(arr[i].show!="-"?"(":"")+disp[disp.length-1].value+(arr[i].show!="-"?")":""),type:0};
+    }
+    else if(arr[i].type===7){
+      disp[disp.length-1]={value:(disp[disp.length-1].type!=1?"(":"")+disp[disp.length-1].value+(disp[disp.length-1].type!=1?")":"")+arr[i].show,type:7};
+    }
+    else if(arr[i].type===10){
+      pop1=disp.pop();
+      pop2=disp.pop();
+      if(arr[i].show==='P'||arr[i].show==='C')disp.push({value:"<sup>"+pop2.value+"</sup>"+arr[i].show+"<sub>"+pop1.value+"</sub>",type:10});
+      else disp.push({value:(pop2.type!=1?"(":"")+pop2.value+(pop2.type!=1?")":"")+"<sup>"+pop1.value+"</sup>",type:1});
+    }
+    else if(arr[i].type===2||arr[i].type===9){
+      pop1=disp.pop();
+      pop2=disp.pop();
+      disp.push({value:(pop2.type!=1?"(":"")+pop2.value+(pop2.type!=1?")":"")+arr[i].show+(pop1.type!=1?"(":"")+pop1.value+(pop1.type!=1?")":""),type:arr[i].type});
+    }
+    else if(arr[i].type===12){
+      pop1=disp.pop();
+      pop2=disp.pop();
+      pop3=disp.pop();
+      disp.push({value:arr[i].show+"("+pop3.value+","+pop2.value+","+pop1.value+")",type:12});
+    }
+  }
+  return disp[0].value;
 };
 module.exports=Mexp;
 
@@ -48945,107 +48945,107 @@ module.exports=Mexp;
 
 var Mexp=__webpack_require__(421);
 Mexp.prototype.postfixEval = function (UserDefined) {
-	'use strict';
-	UserDefined=UserDefined||{};
-	UserDefined.PI=Math.PI;
-	UserDefined.E=Math.E;
-	var stack=[],pop1,pop2,pop3;
-	var disp=[];
-	var temp='';
-	var arr=this.value;
-	var bool=(typeof UserDefined.n!=="undefined");
-	for(var i=0;i<arr.length;i++){
-		if(arr[i].type===1){
-			stack.push({value:arr[i].value,type:1});
-		}
-		else if(arr[i].type===3){
-			stack.push({value:UserDefined[arr[i].value],type:1});
-		}
-		else if(arr[i].type===0){
-			if(typeof stack[stack.length-1].type==="undefined"){
-				stack[stack.length-1].value.push(arr[i]);
-			}
-			else stack[stack.length-1].value=arr[i].value(stack[stack.length-1].value);
-		}
-		else if(arr[i].type===7){
-			if(typeof stack[stack.length-1].type==="undefined"){
-				stack[stack.length-1].value.push(arr[i]);
-			}
-			else stack[stack.length-1].value=arr[i].value(stack[stack.length-1].value);
-		}
-		else if(arr[i].type===8){
-			pop1=stack.pop();
-			pop2=stack.pop();
-			stack.push({type:1,value:arr[i].value(pop2.value,pop1.value)});
-		}
-		else if(arr[i].type===10){
-			pop1=stack.pop();
-			pop2=stack.pop();
-			if(typeof pop2.type==="undefined"){
-				pop2.value=pop2.concat(pop1);
-				pop2.value.push(arr[i]);
-				stack.push(pop2);
-			}
-			else if (typeof pop1.type==="undefined") {
-				pop1.unshift(pop2);
-				pop1.push(arr[i]);
-				stack.push(pop1);
-			}
-			else{
-				stack.push({type:1,value:arr[i].value(pop2.value,pop1.value)});
+  'use strict';
+  UserDefined=UserDefined||{};
+  UserDefined.PI=Math.PI;
+  UserDefined.E=Math.E;
+  var stack=[],pop1,pop2,pop3;
+  var disp=[];
+  var temp='';
+  var arr=this.value;
+  var bool=(typeof UserDefined.n!=="undefined");
+  for(var i=0;i<arr.length;i++){
+    if(arr[i].type===1){
+      stack.push({value:arr[i].value,type:1});
+    }
+    else if(arr[i].type===3){
+      stack.push({value:UserDefined[arr[i].value],type:1});
+    }
+    else if(arr[i].type===0){
+      if(typeof stack[stack.length-1].type==="undefined"){
+        stack[stack.length-1].value.push(arr[i]);
+      }
+      else stack[stack.length-1].value=arr[i].value(stack[stack.length-1].value);
+    }
+    else if(arr[i].type===7){
+      if(typeof stack[stack.length-1].type==="undefined"){
+        stack[stack.length-1].value.push(arr[i]);
+      }
+      else stack[stack.length-1].value=arr[i].value(stack[stack.length-1].value);
+    }
+    else if(arr[i].type===8){
+      pop1=stack.pop();
+      pop2=stack.pop();
+      stack.push({type:1,value:arr[i].value(pop2.value,pop1.value)});
+    }
+    else if(arr[i].type===10){
+      pop1=stack.pop();
+      pop2=stack.pop();
+      if(typeof pop2.type==="undefined"){
+        pop2.value=pop2.concat(pop1);
+        pop2.value.push(arr[i]);
+        stack.push(pop2);
+      }
+      else if (typeof pop1.type==="undefined") {
+        pop1.unshift(pop2);
+        pop1.push(arr[i]);
+        stack.push(pop1);
+      }
+      else{
+        stack.push({type:1,value:arr[i].value(pop2.value,pop1.value)});
             }
-		}
-		else if(arr[i].type===2||arr[i].type===9){
-			pop1=stack.pop();
-			pop2=stack.pop();
-			if(typeof pop2.type==="undefined"){
+    }
+    else if(arr[i].type===2||arr[i].type===9){
+      pop1=stack.pop();
+      pop2=stack.pop();
+      if(typeof pop2.type==="undefined"){
                 console.log(pop2);
-				pop2=pop2.concat(pop1);
-				pop2.push(arr[i]);
-				stack.push(pop2);
-			}
-			else if (typeof pop1.type==="undefined") {
-				pop1.unshift(pop2);
-				pop1.push(arr[i]);
-				stack.push(pop1);
-			}
-			else{
-				stack.push({type:1,value:arr[i].value(pop2.value,pop1.value)});
-			}
-		}
-		else if(arr[i].type===12){
-			pop1=stack.pop();
-			if (typeof pop1.type!=="undefined") {
-				pop1=[pop1];
-			}
-			pop2=stack.pop();
-			pop3=stack.pop();
-			stack.push({type:1,value:arr[i].value(pop3.value,pop2.value,new Mexp(pop1))});
-		}
-		else if(arr[i].type===13){
-			if(bool){
-				stack.push({value:UserDefined[arr[i].value],type:3});
-			}
-			else stack.push([arr[i]]);
-		}
-	}
-	if (stack.length>1) {
-		throw(new Mexp.exception("Uncaught Syntax error"));
-	}
-	return stack[0].value>1000000000000000?"Infinity":parseFloat(stack[0].value.toFixed(15));
+        pop2=pop2.concat(pop1);
+        pop2.push(arr[i]);
+        stack.push(pop2);
+      }
+      else if (typeof pop1.type==="undefined") {
+        pop1.unshift(pop2);
+        pop1.push(arr[i]);
+        stack.push(pop1);
+      }
+      else{
+        stack.push({type:1,value:arr[i].value(pop2.value,pop1.value)});
+      }
+    }
+    else if(arr[i].type===12){
+      pop1=stack.pop();
+      if (typeof pop1.type!=="undefined") {
+        pop1=[pop1];
+      }
+      pop2=stack.pop();
+      pop3=stack.pop();
+      stack.push({type:1,value:arr[i].value(pop3.value,pop2.value,new Mexp(pop1))});
+    }
+    else if(arr[i].type===13){
+      if(bool){
+        stack.push({value:UserDefined[arr[i].value],type:3});
+      }
+      else stack.push([arr[i]]);
+    }
+  }
+  if (stack.length>1) {
+    throw(new Mexp.exception("Uncaught Syntax error"));
+  }
+  return stack[0].value>1000000000000000?"Infinity":parseFloat(stack[0].value.toFixed(15));
 };
 Mexp.eval=function(str,tokens,obj){
-	if (typeof tokens==="undefined") {
-		return this.lex(str).toPostfix().postfixEval();
-	}
-	else if (typeof obj==="undefined") {
-		if (typeof tokens.length!=="undefined") 
-			return this.lex(str,tokens).toPostfix().postfixEval();
-		else
-			return this.lex(str).toPostfix().postfixEval(tokens);
-	}
-	else
-		return this.lex(str,tokens).toPostfix().postfixEval(obj);
+  if (typeof tokens==="undefined") {
+    return this.lex(str).toPostfix().postfixEval();
+  }
+  else if (typeof obj==="undefined") {
+    if (typeof tokens.length!=="undefined")
+      return this.lex(str,tokens).toPostfix().postfixEval();
+    else
+      return this.lex(str).toPostfix().postfixEval(tokens);
+  }
+  else
+    return this.lex(str,tokens).toPostfix().postfixEval(obj);
 };
 module.exports=Mexp;
 
@@ -49056,52 +49056,52 @@ module.exports=Mexp;
 
     var Mexp=__webpack_require__(422);
 
-	Mexp.prototype.toPostfix = function () {
-		'use strict';
-		var post=[],elem,popped,prep,pre,ele;
-    	var stack=[{value:"(",type:4,pre:0}];
-		var arr=this.value;
-		for (var i=1; i < arr.length; i++) {
-			if(arr[i].type===1||arr[i].type===3||arr[i].type===13){	//if token is number,constant,or n(which is also a special constant in our case)
-				if(arr[i].type===1)
-					arr[i].value=Number(arr[i].value);
-				post.push(arr[i]);
-			}
-			else if(arr[i].type===4){
-				stack.push(arr[i]);
-			}
-			else if(arr[i].type===5){
-				while((popped=stack.pop()).type!==4){
-					post.push(popped);
-				}
-			}
-			else if(arr[i].type===11){
-				while((popped=stack.pop()).type!==4){
-					post.push(popped);
-				}
-				stack.push(popped);
-			}
-			else {
-				elem=arr[i];
-				pre=elem.pre;
-				ele=stack[stack.length-1];
-				prep=ele.pre;
-				var flag=ele.value=='Math.pow'&&elem.value=='Math.pow';
-				if(pre>prep)stack.push(elem);
-				else {
-					while(prep>=pre&&!flag||flag&&pre<prep){
-						popped=stack.pop();
-						ele=stack[stack.length-1];
-						post.push(popped);
-						prep=ele.pre;
-						flag=elem.value=='Math.pow'&&ele.value=='Math.pow';
-					}
-					stack.push(elem);
-				}
-			}
-		}
-		return new Mexp(post);
-	};
+  Mexp.prototype.toPostfix = function () {
+    'use strict';
+    var post=[],elem,popped,prep,pre,ele;
+      var stack=[{value:"(",type:4,pre:0}];
+    var arr=this.value;
+    for (var i=1; i < arr.length; i++) {
+      if(arr[i].type===1||arr[i].type===3||arr[i].type===13){ //if token is number,constant,or n(which is also a special constant in our case)
+        if(arr[i].type===1)
+          arr[i].value=Number(arr[i].value);
+        post.push(arr[i]);
+      }
+      else if(arr[i].type===4){
+        stack.push(arr[i]);
+      }
+      else if(arr[i].type===5){
+        while((popped=stack.pop()).type!==4){
+          post.push(popped);
+        }
+      }
+      else if(arr[i].type===11){
+        while((popped=stack.pop()).type!==4){
+          post.push(popped);
+        }
+        stack.push(popped);
+      }
+      else {
+        elem=arr[i];
+        pre=elem.pre;
+        ele=stack[stack.length-1];
+        prep=ele.pre;
+        var flag=ele.value=='Math.pow'&&elem.value=='Math.pow';
+        if(pre>prep)stack.push(elem);
+        else {
+          while(prep>=pre&&!flag||flag&&pre<prep){
+            popped=stack.pop();
+            ele=stack[stack.length-1];
+            post.push(popped);
+            prep=ele.pre;
+            flag=elem.value=='Math.pow'&&ele.value=='Math.pow';
+          }
+          stack.push(elem);
+        }
+      }
+    }
+    return new Mexp(post);
+  };
     module.exports=Mexp;
 
 /***/ }),
@@ -49109,313 +49109,313 @@ module.exports=Mexp;
 /***/ (function(module, exports, __webpack_require__) {
 
 var Mexp=__webpack_require__(423);
-	function inc(arr,val){
-		for(var i=0;i<arr.length;i++)
-			arr[i]+=val;
-		return arr;
-	}
-	var token=['sin','cos','tan','pi','(',')','P','C',
-		  'asin','acos','atan','7','8','9','int',
-		  'cosh','acosh','ln','^','root','4','5','6','/','!',
-		  'tanh','atanh','Mod','1','2','3','*',
-		  'sinh','asinh','e','log','0','.','+','-',',','Sigma','n','Pi','pow'];
-	var show=['sin','cos','tan','&pi;','(',')','P','C',
-		'asin','acos','atan','7','8','9','Int',
-		'cosh','acosh',' ln','^','root','4','5','6','&divide;','!',
-		'tanh','atanh',' Mod ','1','2','3','&times;',
-		'sinh','asinh','e',' log','0','.','+','-',',','&Sigma;','n','&Pi;','pow'];
-	var eva=[Mexp.math.sin,Mexp.math.cos,Mexp.math.tan,'PI','(',')',Mexp.math.P,Mexp.math.C,
-		Mexp.math.asin,Mexp.math.acos,Mexp.math.atan,'7','8','9',Math.floor,
-		Mexp.math.cosh,Mexp.math.acosh,Math.log,Math.pow,Math.sqrt,'4','5','6',Mexp.math.div,Mexp.math.fact,
-		Mexp.math.tanh,Mexp.math.atanh,Mexp.math.mod,'1','2','3',Mexp.math.mul,
-		Mexp.math.sinh,Mexp.math.asinh,'E',Mexp.math.log,'0','.',Mexp.math.add,Mexp.math.sub,',',Mexp.math.sigma,'n',Mexp.math.Pi,Math.pow];
-	var preced={0:11,1:0,2:3,3:0,4:0,5:0,6:0,7:11,8:11,9:1,10:10,11:0,12:11,13:0};
-	var type=[0,0,0,3,4,5,10,10,
-		0,0,0,1,1,1,0,
-		0,0,0,10,0,1,1,1,2,7,
-		0,0,2,1,1,1,2,
-		0,0,3,0,1,6,9,9,11,12,13,12,8];
-	 /*
-	0 : function with syntax function_name(Maths_exp)
-	1 : numbers
-	2 : binary operators like * / Mod left associate and same precedence
-	3 : Math constant values like e,pi,Cruncher ans
-	4 : opening bracket
-	5 : closing bracket
-	6 : decimal
-	7 : function with syntax (Math_exp)function_name
-	8: function with syntax function_name(Math_exp1,Math_exp2)
-	9 : binary operator like +,-
-	10: binary operator like P C or ^
-	11: ,
-	12: function with , seperated three parameters
-	13: variable of Sigma function
-	 */
-	var type0={0:true,1:true,3:true,4:true,6:true,8:true,9:true,12:true,13:true},//type2:true,type4:true,type9:true,type11:true,type21:true,type22
-	type1={0:true,1:true,2:true,3:true,4:true,5:true,6:true,7:true,8:true,9:true,10:true,11:true,12:true,13:true},//type3:true,type5:true,type7:true,type23
-	type_1={0:true,3:true,4:true,8:true,12:true,13:true},
-	empty={},
-	type_3={0:true,1:true,3:true,4:true,6:true,8:true,12:true,13:true},//type_5:true,type_7:true,type_23
-	type6={1:true},
-	newAr=[[],
-			["1","2","3","7","8","9","4","5","6","+","-","*","/","(",")","^","!","P","C","e","0",".",",","n"],
-			["pi","ln","Pi"],
-			["sin","cos","tan","Del","int","Mod","log","pow"],
-			["asin","acos","atan","cosh","root","tanh","sinh"],
-			["acosh","atanh","asinh","Sigma"]];
-	function match(str1,str2,i,x){
-		for(var f=0;f<x;f++){
-			if (str1[i+f]!==str2[f])
-				return false;
-		}
-		return true;
-	}
-	Mexp.addToken=function(tokens){
-		for(i=0;i<tokens.length;i++){
-			x=tokens[i].token.length;
-			var temp=-1;
+  function inc(arr,val){
+    for(var i=0;i<arr.length;i++)
+      arr[i]+=val;
+    return arr;
+  }
+  var token=['sin','cos','tan','pi','(',')','P','C',
+      'asin','acos','atan','7','8','9','int',
+      'cosh','acosh','ln','^','root','4','5','6','/','!',
+      'tanh','atanh','Mod','1','2','3','*',
+      'sinh','asinh','e','log','0','.','+','-',',','Sigma','n','Pi','pow'];
+  var show=['sin','cos','tan','&pi;','(',')','P','C',
+    'asin','acos','atan','7','8','9','Int',
+    'cosh','acosh',' ln','^','root','4','5','6','&divide;','!',
+    'tanh','atanh',' Mod ','1','2','3','&times;',
+    'sinh','asinh','e',' log','0','.','+','-',',','&Sigma;','n','&Pi;','pow'];
+  var eva=[Mexp.math.sin,Mexp.math.cos,Mexp.math.tan,'PI','(',')',Mexp.math.P,Mexp.math.C,
+    Mexp.math.asin,Mexp.math.acos,Mexp.math.atan,'7','8','9',Math.floor,
+    Mexp.math.cosh,Mexp.math.acosh,Math.log,Math.pow,Math.sqrt,'4','5','6',Mexp.math.div,Mexp.math.fact,
+    Mexp.math.tanh,Mexp.math.atanh,Mexp.math.mod,'1','2','3',Mexp.math.mul,
+    Mexp.math.sinh,Mexp.math.asinh,'E',Mexp.math.log,'0','.',Mexp.math.add,Mexp.math.sub,',',Mexp.math.sigma,'n',Mexp.math.Pi,Math.pow];
+  var preced={0:11,1:0,2:3,3:0,4:0,5:0,6:0,7:11,8:11,9:1,10:10,11:0,12:11,13:0};
+  var type=[0,0,0,3,4,5,10,10,
+    0,0,0,1,1,1,0,
+    0,0,0,10,0,1,1,1,2,7,
+    0,0,2,1,1,1,2,
+    0,0,3,0,1,6,9,9,11,12,13,12,8];
+   /*
+  0 : function with syntax function_name(Maths_exp)
+  1 : numbers
+  2 : binary operators like * / Mod left associate and same precedence
+  3 : Math constant values like e,pi,Cruncher ans
+  4 : opening bracket
+  5 : closing bracket
+  6 : decimal
+  7 : function with syntax (Math_exp)function_name
+  8: function with syntax function_name(Math_exp1,Math_exp2)
+  9 : binary operator like +,-
+  10: binary operator like P C or ^
+  11: ,
+  12: function with , seperated three parameters
+  13: variable of Sigma function
+   */
+  var type0={0:true,1:true,3:true,4:true,6:true,8:true,9:true,12:true,13:true},//type2:true,type4:true,type9:true,type11:true,type21:true,type22
+  type1={0:true,1:true,2:true,3:true,4:true,5:true,6:true,7:true,8:true,9:true,10:true,11:true,12:true,13:true},//type3:true,type5:true,type7:true,type23
+  type_1={0:true,3:true,4:true,8:true,12:true,13:true},
+  empty={},
+  type_3={0:true,1:true,3:true,4:true,6:true,8:true,12:true,13:true},//type_5:true,type_7:true,type_23
+  type6={1:true},
+  newAr=[[],
+      ["1","2","3","7","8","9","4","5","6","+","-","*","/","(",")","^","!","P","C","e","0",".",",","n"],
+      ["pi","ln","Pi"],
+      ["sin","cos","tan","Del","int","Mod","log","pow"],
+      ["asin","acos","atan","cosh","root","tanh","sinh"],
+      ["acosh","atanh","asinh","Sigma"]];
+  function match(str1,str2,i,x){
+    for(var f=0;f<x;f++){
+      if (str1[i+f]!==str2[f])
+        return false;
+    }
+    return true;
+  }
+  Mexp.addToken=function(tokens){
+    for(i=0;i<tokens.length;i++){
+      x=tokens[i].token.length;
+      var temp=-1;
 
-			//newAr is a specially designed data structure in which 1D array at location one of 2d array has all string with length 1 2 with 2 and so on
+      //newAr is a specially designed data structure in which 1D array at location one of 2d array has all string with length 1 2 with 2 and so on
 
-			if (x<newAr.length)	//match to check if token is really huge and not existing
-								//if not checked it will break in next line as undefined index
-				for(y=0;y<newAr[x].length;y++){
-					if (tokens[i].token===newAr[x][y]){
-						temp=token.indexOf(newAr[x][y]);
-						break;
-					}
-				}
-			if (temp===-1) {
-				token.push(tokens[i].token);
-				type.push(tokens[i].type);
-				if(newAr.length<=tokens[i].token.length)
-					newAr[tokens[i].token.length]=[];
-				newAr[tokens[i].token.length].push(tokens[i].token);
-				eva.push(tokens[i].value);
-				show.push(tokens[i].show);
-			}
-			else {
-				token[temp]=tokens[i].token;
-				type[temp]=tokens[i].type;
-				eva[temp]=tokens[i].value;
-				show[temp]=tokens[i].show;
-			}
-		}
-	};
-	Mexp.lex=function(inp,tokens){
-		'use strict';
-		var str=[{type:4,value:"(",show:"(",pre:0}];
-		var ptc=[];	//Parenthesis to close at the beginning is after one token
-		var inpStr=inp;
-		var key;
+      if (x<newAr.length) //match to check if token is really huge and not existing
+                //if not checked it will break in next line as undefined index
+        for(y=0;y<newAr[x].length;y++){
+          if (tokens[i].token===newAr[x][y]){
+            temp=token.indexOf(newAr[x][y]);
+            break;
+          }
+        }
+      if (temp===-1) {
+        token.push(tokens[i].token);
+        type.push(tokens[i].type);
+        if(newAr.length<=tokens[i].token.length)
+          newAr[tokens[i].token.length]=[];
+        newAr[tokens[i].token.length].push(tokens[i].token);
+        eva.push(tokens[i].value);
+        show.push(tokens[i].show);
+      }
+      else {
+        token[temp]=tokens[i].token;
+        type[temp]=tokens[i].type;
+        eva[temp]=tokens[i].value;
+        show[temp]=tokens[i].show;
+      }
+    }
+  };
+  Mexp.lex=function(inp,tokens){
+    'use strict';
+    var str=[{type:4,value:"(",show:"(",pre:0}];
+    var ptc=[]; //Parenthesis to close at the beginning is after one token
+    var inpStr=inp;
+    var key;
         var pcounter=0;
-		var allowed=type0;
-		var bracToClose=0;
-		var asterick=empty;
-		var prevKey='';
-		var i,x,y;
-		if(typeof tokens!=="undefined")
-			Mexp.addToken(tokens);
-		var obj={};
-		for(i=0;i<inpStr.length;i++){
-			if (inpStr[i]==' ') {
-				continue;
-			}
-			key='';
-			sec:for(x=(inpStr.length-i>(newAr.length-2)?newAr.length-1:inpStr.length-i);x>0;x--){
-				for(y=0;y<newAr[x].length;y++){
-					if (match(inpStr,newAr[x][y],i,x)){
-						key=newAr[x][y];
-						break sec;
-					}
-				}
-			}
-			i+=key.length-1;
-			if(key===''){
-				throw(new Mexp.exception("Can't understand after "+inpStr.slice(i)));
-			}
-			var index=token.indexOf(key);
-			var cToken=key;
-			var cType=type[index];
-			var cEv=eva[index];
-			var cPre=preced[cType];
-			var	cShow=show[index];
-			var pre=str[str.length-1];
-			for(j=ptc.length;j--;){	//loop over ptc
-				if(ptc[j]===0){
-					if([0,2,3,5,9,11,12,13].indexOf(cType)!==-1){
-						if(allowed[cType]!==true){
-							throw(new Mexp.exception(key+" is not allowed after "+prevKey));
-						}
-						str.push({value:")",type:5,pre:0,show:")"});
-						allowed=type1;
-						asterick=type_3;
-						inc(ptc,-1).pop();
-					}
-				}
-			}
-			if(allowed[cType]!==true){
-				throw(new Mexp.exception(key+" is not allowed after "+prevKey));
-			}
-			if(asterick[cType]===true){
-				cType=2;
-				cEv=Mexp.math.mul;
-				cShow="&times;";
-				cPre=3;
-				i=i-key.length;
-		 	}
-			obj={value:cEv,type:cType,pre:cPre,show:cShow};
-			if(cType===0){
-				allowed=type0;
-				asterick=empty;
-				inc(ptc,2).push(2);
-				str.push(obj);
-				str.push({value:"(",type:4,pre:0,show:"("});
-			}
-			else if(cType===1){
-				if(pre.type===1){
-					pre.value+=cEv;
-					inc(ptc,1);
-				}
-				else {
-					str.push(obj);
-				}
-				allowed=type1;
-				asterick=type_1;
-			}
-			else if(cType===2){
-				allowed=type0;
-				asterick=empty;
-				inc(ptc,2);
-				str.push(obj);
-			}
-			else if(cType===3){//constant
-				str.push(obj);
-				allowed=type1;
-				asterick=type_3;
-			}
-			else if(cType===4){
+    var allowed=type0;
+    var bracToClose=0;
+    var asterick=empty;
+    var prevKey='';
+    var i,x,y;
+    if(typeof tokens!=="undefined")
+      Mexp.addToken(tokens);
+    var obj={};
+    for(i=0;i<inpStr.length;i++){
+      if (inpStr[i]==' ') {
+        continue;
+      }
+      key='';
+      sec:for(x=(inpStr.length-i>(newAr.length-2)?newAr.length-1:inpStr.length-i);x>0;x--){
+        for(y=0;y<newAr[x].length;y++){
+          if (match(inpStr,newAr[x][y],i,x)){
+            key=newAr[x][y];
+            break sec;
+          }
+        }
+      }
+      i+=key.length-1;
+      if(key===''){
+        throw(new Mexp.exception("Can't understand after "+inpStr.slice(i)));
+      }
+      var index=token.indexOf(key);
+      var cToken=key;
+      var cType=type[index];
+      var cEv=eva[index];
+      var cPre=preced[cType];
+      var cShow=show[index];
+      var pre=str[str.length-1];
+      for(j=ptc.length;j--;){ //loop over ptc
+        if(ptc[j]===0){
+          if([0,2,3,5,9,11,12,13].indexOf(cType)!==-1){
+            if(allowed[cType]!==true){
+              throw(new Mexp.exception(key+" is not allowed after "+prevKey));
+            }
+            str.push({value:")",type:5,pre:0,show:")"});
+            allowed=type1;
+            asterick=type_3;
+            inc(ptc,-1).pop();
+          }
+        }
+      }
+      if(allowed[cType]!==true){
+        throw(new Mexp.exception(key+" is not allowed after "+prevKey));
+      }
+      if(asterick[cType]===true){
+        cType=2;
+        cEv=Mexp.math.mul;
+        cShow="&times;";
+        cPre=3;
+        i=i-key.length;
+      }
+      obj={value:cEv,type:cType,pre:cPre,show:cShow};
+      if(cType===0){
+        allowed=type0;
+        asterick=empty;
+        inc(ptc,2).push(2);
+        str.push(obj);
+        str.push({value:"(",type:4,pre:0,show:"("});
+      }
+      else if(cType===1){
+        if(pre.type===1){
+          pre.value+=cEv;
+          inc(ptc,1);
+        }
+        else {
+          str.push(obj);
+        }
+        allowed=type1;
+        asterick=type_1;
+      }
+      else if(cType===2){
+        allowed=type0;
+        asterick=empty;
+        inc(ptc,2);
+        str.push(obj);
+      }
+      else if(cType===3){//constant
+        str.push(obj);
+        allowed=type1;
+        asterick=type_3;
+      }
+      else if(cType===4){
                 pcounter+=ptc.length;
                 ptc=[];
-				bracToClose++;
-				allowed=type0;
-				asterick=empty;
-				str.push(obj);
-			}
-			else if(cType===5){
-				if(!bracToClose){
-					throw(new Mexp.exception("Closing parenthesis are more than opening one, wait What!!!"));
-				}
-                while(pcounter--){	//loop over ptc
-    						str.push({value:")",type:5,pre:0,show:")"});
-    			}
+        bracToClose++;
+        allowed=type0;
+        asterick=empty;
+        str.push(obj);
+      }
+      else if(cType===5){
+        if(!bracToClose){
+          throw(new Mexp.exception("Closing parenthesis are more than opening one, wait What!!!"));
+        }
+                while(pcounter--){  //loop over ptc
+                str.push({value:")",type:5,pre:0,show:")"});
+          }
                 pcounter=0;
-				bracToClose--;
-				allowed=type1;
-				asterick=type_3;
-				str.push(obj);
-			}
-			else if(cType===6){
-				if(pre.hasDec){
-					throw(new Mexp.exception("Two decimals are not allowed in one number"));
-				}
-				if(pre.type!==1){
-					pre={value:0,type:1,pre:0};	//pre needs to be changed as it will the last value now to be safe in later code
-					str.push(pre);
-					inc(ptc,-1);
-				}
-				allowed=type6;
-				inc(ptc,1);
-				asterick=empty;
-				pre.value+=cEv;
-				pre.hasDec=true;
-			}
-			else if(cType===7){
-				allowed=type1;
-				asterick=type_3;
-				inc(ptc,1);
-				str.push(obj);
-			}
-			if(cType===8){
-				allowed=type0;
-				asterick=empty;
-				inc(ptc,4).push(4);
-				str.push(obj);
-				str.push({value:"(",type:4,pre:0,show:"("});
-			}
-			else if(cType===9){
-				if(pre.type===9){
-					if(pre.value===Mexp.math.add){
-						pre.value=cEv;
-						pre.show=cShow;
-						inc(ptc,1);
-					}
-					else if(pre.value===Mexp.math.sub&&cShow==='-'){
-						pre.value=Mexp.math.add;
-						pre.show='+';
-						inc(ptc,1);
-					}
-				}
-				else if(pre.type!==5&&pre.type!==7&&pre.type!==1&&pre.type!==3&&pre.type!==13){//changesign only when negative is found
-					if(cToken==='-'){//do nothing for + token
-									//don't add with the above if statement as that will run the else statement of parent if on Ctoken +
-						allowed=type0;
-						asterick=empty;
-						inc(ptc,2).push(2);
-						str.push({value:Mexp.math.changeSign,type:0,pre:21,show:"-"});
-						str.push({value:"(",type:4,pre:0,show:"("});
-					}
-				}
-				else{
-					str.push(obj);
-					inc(ptc,2);
-				}
-				allowed=type0;
-				asterick=empty;
-			}
-			else if(cType===10){
-				allowed=type0;
-				asterick=empty;
-				inc(ptc,2);
-				str.push(obj);
-			}
-			else if(cType===11){
-				allowed=type0;
-				asterick=empty;
-				str.push(obj);
-			}
-			else if(cType===12){
-				allowed=type0;
-				asterick=empty;
-				inc(ptc,6).push(6);
-				str.push(obj);
-				str.push({value:"(",type:4,pre:0});
-			}
-			else if(cType===13){
-				allowed=type1;
-				asterick=type_3;
-				str.push(obj);
-			}
-			inc(ptc,-1);
-			prevKey=key;
-		}
-		for(var j=ptc.length;j--;){	//loop over ptc
-			if(ptc[j]===0){
+        bracToClose--;
+        allowed=type1;
+        asterick=type_3;
+        str.push(obj);
+      }
+      else if(cType===6){
+        if(pre.hasDec){
+          throw(new Mexp.exception("Two decimals are not allowed in one number"));
+        }
+        if(pre.type!==1){
+          pre={value:0,type:1,pre:0}; //pre needs to be changed as it will the last value now to be safe in later code
+          str.push(pre);
+          inc(ptc,-1);
+        }
+        allowed=type6;
+        inc(ptc,1);
+        asterick=empty;
+        pre.value+=cEv;
+        pre.hasDec=true;
+      }
+      else if(cType===7){
+        allowed=type1;
+        asterick=type_3;
+        inc(ptc,1);
+        str.push(obj);
+      }
+      if(cType===8){
+        allowed=type0;
+        asterick=empty;
+        inc(ptc,4).push(4);
+        str.push(obj);
+        str.push({value:"(",type:4,pre:0,show:"("});
+      }
+      else if(cType===9){
+        if(pre.type===9){
+          if(pre.value===Mexp.math.add){
+            pre.value=cEv;
+            pre.show=cShow;
+            inc(ptc,1);
+          }
+          else if(pre.value===Mexp.math.sub&&cShow==='-'){
+            pre.value=Mexp.math.add;
+            pre.show='+';
+            inc(ptc,1);
+          }
+        }
+        else if(pre.type!==5&&pre.type!==7&&pre.type!==1&&pre.type!==3&&pre.type!==13){//changesign only when negative is found
+          if(cToken==='-'){//do nothing for + token
+                  //don't add with the above if statement as that will run the else statement of parent if on Ctoken +
+            allowed=type0;
+            asterick=empty;
+            inc(ptc,2).push(2);
+            str.push({value:Mexp.math.changeSign,type:0,pre:21,show:"-"});
+            str.push({value:"(",type:4,pre:0,show:"("});
+          }
+        }
+        else{
+          str.push(obj);
+          inc(ptc,2);
+        }
+        allowed=type0;
+        asterick=empty;
+      }
+      else if(cType===10){
+        allowed=type0;
+        asterick=empty;
+        inc(ptc,2);
+        str.push(obj);
+      }
+      else if(cType===11){
+        allowed=type0;
+        asterick=empty;
+        str.push(obj);
+      }
+      else if(cType===12){
+        allowed=type0;
+        asterick=empty;
+        inc(ptc,6).push(6);
+        str.push(obj);
+        str.push({value:"(",type:4,pre:0});
+      }
+      else if(cType===13){
+        allowed=type1;
+        asterick=type_3;
+        str.push(obj);
+      }
+      inc(ptc,-1);
+      prevKey=key;
+    }
+    for(var j=ptc.length;j--;){ //loop over ptc
+      if(ptc[j]===0){
 
-				str.push({value:")",show:")",type:5,pre:3});
-				inc(ptc,-1).pop();
-			}
-		}
-		if (allowed[5]!==true) {
-			throw(new Mexp.exception("complete the expression"));
-		}
-		while(bracToClose--)
-			str.push({value:")",show:")",type:5,pre:3});
+        str.push({value:")",show:")",type:5,pre:3});
+        inc(ptc,-1).pop();
+      }
+    }
+    if (allowed[5]!==true) {
+      throw(new Mexp.exception("complete the expression"));
+    }
+    while(bracToClose--)
+      str.push({value:")",show:")",type:5,pre:3});
 
-		str.push({type:5,value:")",show:")",pre:0});
+    str.push({type:5,value:")",show:")",pre:0});
 //        console.log(str);
-		return new Mexp(str);
-	};
+    return new Mexp(str);
+  };
     module.exports=Mexp;
 
 
@@ -49423,125 +49423,125 @@ var Mexp=__webpack_require__(423);
 /* 423 */
 /***/ (function(module, exports) {
 
-	var Mexp=function(parsed){
-		this.value=parsed;
+  var Mexp=function(parsed){
+    this.value=parsed;
 
-	};
+  };
 
-	Mexp.math={
-		isDegree:true, //mode of calculator
-		acos:function(x){
-			return (Mexp.math.isDegree?180/Math.PI*Math.acos(x):Math.acos(x));
-		},
-		add:function(a,b){
-			return a+b;
-		},
-		asin:function(x){
-			return (Mexp.math.isDegree?180/Math.PI*Math.asin(x):Math.asin(x));
-		},
-		atan:function(x){
-			return (Mexp.math.isDegree?180/Math.PI*Math.atan(x):Math.atan(x));
-		},
-		acosh:function(x){
-			return Math.log(x+Math.sqrt(x*x-1));
-		},
-		asinh:function(x){
-			return Math.log(x+Math.sqrt(x*x+1));
-		},
-		atanh:function(x){
-			return Math.log((1+x)/(1-x));
-		},
-		C:function(n,r){
-			var pro=1,other=n-r,choice=r;
-			if(choice<other){
-			choice=other;
-			other=r;
-			}
-			for(var i=choice+1;i<=n;i++)
-				pro*=i;
-			return pro/Mexp.math.fact(other);
-		},
-		changeSign:function(x){
-			return -x;
-		},
-		cos:function(x){
-			if(Mexp.math.isDegree)x=Mexp.math.toRadian(x);
-			return Math.cos(x);
-		},
-		cosh:function(x){
-			return (Math.pow(Math.E,x)+Math.pow(Math.E,-1*x))/2;
-		},
-		div:function(a,b){
-		return a/b;
-		},
-		fact:function(n) {
-		if(n%1!==0)return "NAN";
-			var pro=1;
-			for(var i=2;i<=n;i++)
-				pro*=i;
-			return pro;
-		},
-		inverse:function(x){
-			return 1/x;
-		},
-		log:function(i){
-			return Math.log(i)/Math.log(10);
-		},
-		mod:function(a,b){
-		return a%b;
-		},
-		mul:function(a,b){
-		return a*b;
-		},
-		P:function(n,r){var pro=1;
-			 for(var i=Math.floor(n)-Math.floor(r)+1;i<=Math.floor(n);i++)
-					pro*=i;
-					return pro;
+  Mexp.math={
+    isDegree:true, //mode of calculator
+    acos:function(x){
+      return (Mexp.math.isDegree?180/Math.PI*Math.acos(x):Math.acos(x));
+    },
+    add:function(a,b){
+      return a+b;
+    },
+    asin:function(x){
+      return (Mexp.math.isDegree?180/Math.PI*Math.asin(x):Math.asin(x));
+    },
+    atan:function(x){
+      return (Mexp.math.isDegree?180/Math.PI*Math.atan(x):Math.atan(x));
+    },
+    acosh:function(x){
+      return Math.log(x+Math.sqrt(x*x-1));
+    },
+    asinh:function(x){
+      return Math.log(x+Math.sqrt(x*x+1));
+    },
+    atanh:function(x){
+      return Math.log((1+x)/(1-x));
+    },
+    C:function(n,r){
+      var pro=1,other=n-r,choice=r;
+      if(choice<other){
+      choice=other;
+      other=r;
+      }
+      for(var i=choice+1;i<=n;i++)
+        pro*=i;
+      return pro/Mexp.math.fact(other);
+    },
+    changeSign:function(x){
+      return -x;
+    },
+    cos:function(x){
+      if(Mexp.math.isDegree)x=Mexp.math.toRadian(x);
+      return Math.cos(x);
+    },
+    cosh:function(x){
+      return (Math.pow(Math.E,x)+Math.pow(Math.E,-1*x))/2;
+    },
+    div:function(a,b){
+    return a/b;
+    },
+    fact:function(n) {
+    if(n%1!==0)return "NAN";
+      var pro=1;
+      for(var i=2;i<=n;i++)
+        pro*=i;
+      return pro;
+    },
+    inverse:function(x){
+      return 1/x;
+    },
+    log:function(i){
+      return Math.log(i)/Math.log(10);
+    },
+    mod:function(a,b){
+    return a%b;
+    },
+    mul:function(a,b){
+    return a*b;
+    },
+    P:function(n,r){var pro=1;
+       for(var i=Math.floor(n)-Math.floor(r)+1;i<=Math.floor(n);i++)
+          pro*=i;
+          return pro;
 
-		},
-		Pi:function(low,high,ex){
-			var pro=1;
-			for(var i=low;i<=high;i++){
-				pro*=Number(ex.postfixEval({n:i}));
-			}
-			return pro;
-		},
-		pow10x:function(e){
-			var x=1;
-			while(e--){x*=10;}
-			return x;
-		},
-		sigma:function(low,high,ex){
-			var sum=0;
-			for(var i=low;i<=high;i++){
-				sum+=Number(ex.postfixEval({n:i}));
-			}
-			return sum;
-		},
-		sin:function(x){
-			if(Mexp.math.isDegree)x=Mexp.math.toRadian(x);
-			return Math.sin(x);
-		},
-		sinh:function(x){
-			return (Math.pow(Math.E,x)-Math.pow(Math.E,-1*x))/2;
-		},
-		sub:function(a,b){
-		return a-b;
-		},
-		tan:function(x){
-			if(Mexp.math.isDegree)x=Mexp.math.toRadian(x);
-			return Math.tan(x);
-		},
-		tanh:function(x){
-			return Mexp.sinha(x)/Mexp.cosha(x);
-		},
-		toRadian:function(x){
-			return x*Math.PI/180;
-		}
-	};
-	Mexp.exception=function(message){
-		this.message=message;
-	};
+    },
+    Pi:function(low,high,ex){
+      var pro=1;
+      for(var i=low;i<=high;i++){
+        pro*=Number(ex.postfixEval({n:i}));
+      }
+      return pro;
+    },
+    pow10x:function(e){
+      var x=1;
+      while(e--){x*=10;}
+      return x;
+    },
+    sigma:function(low,high,ex){
+      var sum=0;
+      for(var i=low;i<=high;i++){
+        sum+=Number(ex.postfixEval({n:i}));
+      }
+      return sum;
+    },
+    sin:function(x){
+      if(Mexp.math.isDegree)x=Mexp.math.toRadian(x);
+      return Math.sin(x);
+    },
+    sinh:function(x){
+      return (Math.pow(Math.E,x)-Math.pow(Math.E,-1*x))/2;
+    },
+    sub:function(a,b){
+    return a-b;
+    },
+    tan:function(x){
+      if(Mexp.math.isDegree)x=Mexp.math.toRadian(x);
+      return Math.tan(x);
+    },
+    tanh:function(x){
+      return Mexp.sinha(x)/Mexp.cosha(x);
+    },
+    toRadian:function(x){
+      return x*Math.PI/180;
+    }
+  };
+  Mexp.exception=function(message){
+    this.message=message;
+  };
     module.exports=Mexp;
 
 /***/ }),
@@ -55775,7 +55775,7 @@ module.exports = baseSum;
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -55793,53 +55793,53 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Results = function (_Component) {
-	_inherits(Results, _Component);
+  _inherits(Results, _Component);
 
-	function Results() {
-		_classCallCheck(this, Results);
+  function Results() {
+    _classCallCheck(this, Results);
 
-		return _possibleConstructorReturn(this, (Results.__proto__ || Object.getPrototypeOf(Results)).apply(this, arguments));
-	}
+    return _possibleConstructorReturn(this, (Results.__proto__ || Object.getPrototypeOf(Results)).apply(this, arguments));
+  }
 
-	_createClass(Results, [{
-		key: "render",
-		value: function render() {
-			return _react2.default.createElement(
-				"table",
-				{ className: "table table-bordered table-hover" },
-				_react2.default.createElement(
-					"thead",
-					null,
-					_react2.default.createElement(
-						"tr",
-						null,
-						_react2.default.createElement(
-							"th",
-							null,
-							"Year"
-						),
-						_react2.default.createElement(
-							"th",
-							null,
-							"Net Income ($)"
-						),
-						_react2.default.createElement(
-							"th",
-							null,
-							"Savings ($)"
-						)
-					)
-				),
-				_react2.default.createElement(
-					"tbody",
-					null,
-					this.props.resultData
-				)
-			);
-		}
-	}]);
+  _createClass(Results, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "table",
+        { className: "table table-bordered table-hover" },
+        _react2.default.createElement(
+          "thead",
+          null,
+          _react2.default.createElement(
+            "tr",
+            null,
+            _react2.default.createElement(
+              "th",
+              null,
+              "Year"
+            ),
+            _react2.default.createElement(
+              "th",
+              null,
+              "Net Income ($)"
+            ),
+            _react2.default.createElement(
+              "th",
+              null,
+              "Savings ($)"
+            )
+          )
+        ),
+        _react2.default.createElement(
+          "tbody",
+          null,
+          this.props.resultData
+        )
+      );
+    }
+  }]);
 
-	return Results;
+  return Results;
 }(_react.Component);
 
 exports.default = Results;
@@ -55852,7 +55852,7 @@ exports.default = Results;
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -55870,40 +55870,40 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var ResultData = function (_Component) {
-	_inherits(ResultData, _Component);
+  _inherits(ResultData, _Component);
 
-	function ResultData() {
-		_classCallCheck(this, ResultData);
+  function ResultData() {
+    _classCallCheck(this, ResultData);
 
-		return _possibleConstructorReturn(this, (ResultData.__proto__ || Object.getPrototypeOf(ResultData)).apply(this, arguments));
-	}
+    return _possibleConstructorReturn(this, (ResultData.__proto__ || Object.getPrototypeOf(ResultData)).apply(this, arguments));
+  }
 
-	_createClass(ResultData, [{
-		key: 'render',
-		value: function render() {
-			return _react2.default.createElement(
-				'tr',
-				null,
-				_react2.default.createElement(
-					'td',
-					null,
-					this.props.year
-				),
-				_react2.default.createElement(
-					'td',
-					null,
-					this.props.income
-				),
-				_react2.default.createElement(
-					'td',
-					null,
-					this.props.savings
-				)
-			);
-		}
-	}]);
+  _createClass(ResultData, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'tr',
+        null,
+        _react2.default.createElement(
+          'td',
+          null,
+          this.props.year
+        ),
+        _react2.default.createElement(
+          'td',
+          null,
+          this.props.income
+        ),
+        _react2.default.createElement(
+          'td',
+          null,
+          this.props.savings
+        )
+      );
+    }
+  }]);
 
-	return ResultData;
+  return ResultData;
 }(_react.Component);
 
 exports.default = ResultData;
