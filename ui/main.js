@@ -15,9 +15,9 @@ class App extends React.Component {
 		super(props);
 
 		this.state = {
+			age: 25,
 			curInterestRate: 0.04,
 			curTotalTaxBurden: getTaxBurden(),
-			graphData: [],
 			debt: {
 				loans: getLoans(),
 				get total () {
@@ -31,6 +31,7 @@ class App extends React.Component {
 					return amount;
 				}
 			},
+			graphData: [],
 			income: 50000,
 			initialIncome: 50000,
 			get netIncome () {
@@ -38,11 +39,9 @@ class App extends React.Component {
 			},
 			nestEgg: 0,
 			raisePercent: 5,
-			resultData: [],
 			retirementIncome: 200000,
 			savingPercent: 0.15,
 			savings: 10,
-			startAge: 25,
 			workingYears: 42,
 			yrsRetired: 0,
 		};
@@ -54,8 +53,8 @@ class App extends React.Component {
 
 		this.setState(
 			{
+				age: parseInt(form.elements['curAge'].value || 25),
 				curTotalTaxBurden: getTaxBurden(),
-				graphData: [],
 				debt: {
 					loans: getLoans(),
 					get total () {
@@ -69,6 +68,7 @@ class App extends React.Component {
 						return amount;
 					}
 				},
+				graphData: [],
 				income: parseInt(form.elements['income'].value || 50000),
 				initialIncome: parseInt(form.elements['income'].value || 50000),
 				get netIncome () {
@@ -76,11 +76,9 @@ class App extends React.Component {
 				},
 				nestEgg: 0,
 				raisePercent: form.elements['raisePercent'].value ? parseFloat(form.elements['raisePercent'].value) : 5,
-				resultData: [],
 				retirementIncome: form.elements['retIncome'].value ? parseInt(form.elements['retIncome'].value) : 200000,
 				savingPercent: form.elements['savePercent'].value ? parseFloat(form.elements['savePercent'].value / 100) : 0.15,
 				savings: parseInt(form.elements['savings'].value || 0),
-				startAge: parseInt(form.elements['curAge'].value || 25),
 				get workingYears () {
 					let value = stateObj.workingYears;
 
@@ -97,10 +95,10 @@ class App extends React.Component {
 	}
 
 	work() {
-		let rows = [];
+		let age = this.state.age;
+		let graphData = [];
 		let income = this.state.income;
 		let savings = this.state.savings;
-		let graphData = [];
 
 		for (let year = 1; year <= this.state.workingYears; year++) {
 			let disposibleIncome = this.state.netIncome * this.state.savingPercent;
@@ -113,23 +111,16 @@ class App extends React.Component {
 
 			income = giveRaise(income, this.state.raisePercent);
 
-			graphData.push({Age: year + this.state.startAge, 'Net Income': applyTax(income.toFixed(2)), Savings: savings.toFixed(2)});
+			graphData.push({Age: age, Savings: savings.toFixed(2), 'Net Income': applyTax(income.toFixed(2))});
 
-			rows.push(
-				<ResultsData
-					income={applyTax(income).toFixed(2)}
-					key={year}
-					savings={savings.toFixed(2)}
-					year={year}
-				/>
-			);
+			age++;
 		}
 
 		this.setState(
 			{
+				age: age,
 				income: income,
 				nestEgg: savings,
-				resultData: rows,
 				savings: savings,
 				graphData: graphData,
 			},
@@ -152,17 +143,20 @@ class App extends React.Component {
 	}
 
 	retire() {
+		let age = this.state.age;
+		let graphData = this.state.graphData;
 		let savings = this.state.savings;
 		let yrsRetired = this.state.yrsRetired;
-		let ageRetired = this.state.yrsRetired + this.state.startAge;
-		let graphData = this.state.graphData;
+
 		do {
-			savings = interest(savings, this.state.curInterestRate) - this.state.retirementIncome
-			yrsRetired++
-			graphData.push({Age: yrsRetired + ageRetired, 'Net Income': 0, Savings: savings.toFixed(2)})
+			savings = interest(savings, this.state.curInterestRate) - this.state.retirementIncome;
+			graphData.push({Age: age, Savings: savings.toFixed(2), 'Net Income': 0});
+			age++;
+			yrsRetired++;
 		} while (savings > this.state.retirementIncome)
 
 		this.setState({
+			age: age,
 			graphData: graphData,
 			savings: savings,
 			yrsRetired: yrsRetired,
@@ -194,10 +188,10 @@ class App extends React.Component {
 				</form>
 				{ (this.state.graphData.length > 0) &&
 					<div>
-						<ReactChart 
-							data={this.state.graphData} 
-							retirementAge={this.state.workingYears + this.state.startAge}
-							retirementIncome={this.state.retirementIncome} 
+						<ReactChart
+							data={this.state.graphData}
+							retirementAge={this.state.age - this.state.yrsRetired}
+							retirementIncome={this.state.retirementIncome}
 						/>
 
 						<Message
