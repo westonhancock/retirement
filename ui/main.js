@@ -6,8 +6,6 @@ import Debt from '../components/Debt';
 import FormField from '../components/FormField';
 import Message from '../components/Message';
 import ReactChart from '../components/ReactChart';
-import Results from '../components/Results';
-import ResultsData from '../components/ResultsData';
 
 let defaults = {
 	age: 25,
@@ -206,7 +204,7 @@ class App extends React.Component {
 
 		return (
 			<div className="wrapper">
-				<form action="javascript:;" method="POST" name="retirement" ref={fm => this.form = fm}>
+				<form action="javascript:;" className="col-md-4 col-sm-12" method="POST" name="retirement" ref={fm => this.form = fm}>
 					<legend>Info</legend>
 
 					<FormField handleBlur={() => this.calculate()} label="Annual Income (Gross)" name="income" placeholder="$50,000" inputType="number" />
@@ -225,7 +223,7 @@ class App extends React.Component {
 					<button type="submit" className="btn btn-primary" onClick={() => this.calculate()}>Calculate</button>
 				</form>
 				{ (this.state.graphData.length > 0) &&
-					<div>
+					<div className="col-md-8 col-sm-12">
 						<ReactChart
 							data={this.state.graphData}
 							retirementAge={this.state.startAge + this.state.workingYears}
