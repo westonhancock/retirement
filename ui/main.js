@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Taxee from 'taxee-tax-statistics';
 
 import Debt from '../components/Debt';
 import FormField from '../components/FormField';
@@ -10,6 +11,9 @@ import ResultsData from '../components/ResultsData';
 
 let form;
 
+const taxes = Taxee[2018];
+const federalStats = taxes.federal;
+
 class App extends React.Component {
 	constructor(props) {
 		super(props);
@@ -17,7 +21,7 @@ class App extends React.Component {
 		this.state = {
 			age: 25,
 			curInterestRate: 0.04,
-			curTotalTaxBurden: getTaxBurden(),
+			curTotalTaxBurden: getTaxBurden(this.income, this.filingType, this.residence),
 			debt: {
 				loans: getLoans(),
 				get total () {
@@ -31,14 +35,16 @@ class App extends React.Component {
 					return amount;
 				}
 			},
+			filingType: 'single',
 			graphData: [],
 			income: 50000,
 			initialIncome: 50000,
 			get netIncome () {
-				return applyTax(this.income);
+				return applyTax(this.income, this.filingType, this.residence);
 			},
 			nestEgg: 0,
 			raisePercent: 5,
+			residence: 'california',
 			retirementIncome: 200000,
 			savingPercent: 0.15,
 			savings: 10,
@@ -54,7 +60,7 @@ class App extends React.Component {
 		this.setState(
 			{
 				age: parseInt(form.elements['curAge'].value || 25),
-				curTotalTaxBurden: getTaxBurden(),
+				curTotalTaxBurden: getTaxBurden(stateObj.income, stateObj.filingType, stateObj.residence),
 				debt: {
 					loans: getLoans(),
 					get total () {
@@ -68,14 +74,16 @@ class App extends React.Component {
 						return amount;
 					}
 				},
+				filingType: form.elements['filingType'].value || 'single',
 				graphData: [],
 				income: parseInt(form.elements['income'].value || 50000),
 				initialIncome: parseInt(form.elements['income'].value || 50000),
 				get netIncome () {
-					return applyTax(this.income);
+					return applyTax(this.income, this.filingType, this.residence);
 				},
 				nestEgg: 0,
 				raisePercent: form.elements['raisePercent'].value ? parseFloat(form.elements['raisePercent'].value) : 5,
+				residence: form.elements['residence'].value || 'california',
 				retirementIncome: form.elements['retIncome'].value ? parseInt(form.elements['retIncome'].value) : 200000,
 				savingPercent: form.elements['savePercent'].value ? parseFloat(form.elements['savePercent'].value / 100) : 0.15,
 				savings: parseInt(form.elements['savings'].value || 0),
@@ -167,19 +175,38 @@ class App extends React.Component {
 		this.work();
 	}
 
+	static defaultProps = {
+		residences: ['california', 'chicago', 'ohio'],
+		filingTypes: ['single', 'married', 'married_separately', 'head_of_household']
+	}
+
 	render () {
+		let residenceOptions = this.props.residences.map(
+			residence => {
+				return <option key={residence} value={residence}>{residence}</option>
+			}
+		);
+
+		let filingTypeOptions = this.props.filingTypes.map(
+			filingType => {
+				return <option key={filingType} value={filingType}>{filingType}</option>
+			}
+		);
+
 		return (
 			<div className="wrapper">
 				<form action="javascript:;" method="POST" name="retirement" ref={fm => this.form = fm}>
 					<legend>Info</legend>
 
-					<FormField handleBlur={() => this.handleReset()} label="Annual Income (Gross)" name="income" placeholder="$50000" />
-					<FormField handleBlur={() => this.handleReset()} label="Current Age" name="curAge" placeholder="25" />
-					<FormField handleBlur={() => this.handleReset()} label="Target Retirement Age" name="retAge" placeholder="67" />
-					<FormField handleBlur={() => this.handleReset()} label="Current Savings" name="savings" placeholder="$0" />
-					<FormField handleBlur={() => this.handleReset()} label="Percent of Net income saved" name="savePercent" placeholder="15%" />
-					<FormField handleBlur={() => this.handleReset()} label="Expected average raise" name="raisePercent" placeholder="5%" />
-					<FormField handleBlur={() => this.handleReset()} label="Target Retirement Income" name="retIncome" placeholder="$200000" />
+					<FormField handleBlur={() => this.handleReset()} label="Annual Income (Gross)" name="income" placeholder="$50000" inputType="number" />
+					<FormField handleBlur={() => this.handleReset()} label="Current Age" name="curAge" placeholder="25" inputType="number" />
+					<FormField handleBlur={() => this.handleReset()} label="Target Retirement Age" name="retAge" placeholder="67" inputType="number" />
+					<FormField handleBlur={() => this.handleReset()} label="Current Savings" name="savings" placeholder="$0" inputType="number" />
+					<FormField handleBlur={() => this.handleReset()} label="Percent of Net income saved" name="savePercent" placeholder="15%" inputType="number" />
+					<FormField handleBlur={() => this.handleReset()} label="Expected average raise" name="raisePercent" placeholder="5%" inputType="number" />
+					<FormField handleBlur={() => this.handleReset()} label="Target Retirement Income" name="retIncome" placeholder="$200000" inputType="number" />
+					<FormField handleBlur={() => this.handleReset()} label="Current State of Residence" name="residence" placeholder="california" inputType="select" selectOptions={residenceOptions} />
+					<FormField handleBlur={() => this.handleReset()} label="Tax Filing Type" name="filingType" placeholder="single" inputType="select" selectOptions={filingTypeOptions} />
 
 					<label>Debt</label>
 					<Debt />
@@ -217,8 +244,8 @@ ReactDOM.render(
 	document.querySelector('.app')
 );
 
-function applyTax(amount, rate) {
-	rate = rate || getTaxBurden();
+function applyTax(amount, filingType, residence, rate) {
+	rate = rate || getTaxBurden(amount, filingType, residence);
 
 	if (rate > 1) {
 		rate = rate / 100;
@@ -227,6 +254,75 @@ function applyTax(amount, rate) {
 	let inverse = 1 - rate;
 
 	return amount * inverse;
+}
+
+function getTaxBurden(income, filingType, residence) {
+	let rate = 39;
+	let curAmount  = 0;
+
+	let federalTaxes = federalStats.tax_withholding_percentage_method_tables.annual[filingType];
+
+	let federalTaxBrackets = [];
+
+	if (federalTaxes) {
+		federalTaxBrackets = federalTaxes.income_tax_brackets;
+	}
+
+	for (let i = 0; i < federalTaxBrackets.length; i++) {
+		let curBracket = federalTaxBrackets[i];
+		let nextBracket = federalTaxBrackets[i + 1];
+
+		let incomeFloor = Number(curBracket.amount);
+		let incomeCeiling = income;
+
+		if ((i + 1) < federalTaxBrackets.length) {
+			incomeCeiling = Number(nextBracket.amount)
+		}
+
+		let marginal_rate = Number(curBracket.marginal_rate)/100;
+
+		if (incomeCeiling > income) {
+			curAmount += (income - curBracket.amount) * marginal_rate;
+
+			break;
+		}
+
+		curAmount += (incomeCeiling - incomeFloor) * marginal_rate;
+	}
+
+	let stateTaxes = taxes[residence];
+
+	let stateTaxBrackets = [];
+
+	if (stateTaxes) {
+		stateTaxBrackets = stateTaxes[filingType].income_tax_brackets;
+	}
+
+    for (let i = 0; i < stateTaxBrackets.length; i++) {
+		let curBracket = stateTaxBrackets[i];
+		let nextBracket = stateTaxBrackets[i + 1];
+
+		let incomeFloor = Number(curBracket.bracket);
+		let incomeCeiling = income;
+
+		if ((i + 1) < stateTaxBrackets.length) {
+			incomeCeiling = Number(nextBracket.bracket)
+		}
+
+		let marginal_rate = Number(curBracket.marginal_rate)/100;
+
+		if (incomeCeiling > income) {
+			curAmount += (income - curBracket.bracket) * marginal_rate;
+
+			break;
+		}
+
+		curAmount += (incomeCeiling - incomeFloor) * marginal_rate;
+	}
+
+	rate = Math.round((curAmount/income) * 100);
+
+	return rate;
 }
 
 function getLoans() {
@@ -250,12 +346,7 @@ function getLoans() {
 	return loans;
 }
 
-// finish this function
-function getTaxBurden() {
-	return 39;
-}
-
-function giveRaise(salery, percent) {
+function giveRaise(salary, percent) {
 	if (!percent) {
 		return;
 	}
@@ -266,7 +357,7 @@ function giveRaise(salery, percent) {
 
 	let raise = 1 + percent;
 
-	return salery * raise;
+	return salary * raise;
 }
 
 function interest(amount, rate) {
